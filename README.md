@@ -1,5 +1,22 @@
 # ProgressiveCareUnit
 This Progressive Care Unit project is for SLIIT 3rd year Application Framework Module.
-This project have 4 contributers.
-    B M C S Basnayake   IT16158764
-    H S K Wijesekara    IT16130562
+
+2016 Intake Weekend Batch 3rd Year AF Project
+==============================================
+Web Based Progressive Care Unit Application using MERN (MongoDB, ExpressJS, ReactJS, Node) stack
+
+BackEnd Technologies (API)
+---------------------
+* ExpressJS
+* Mongo DB
+
+FrontEnd Technologies
+--------------------
+* HTML, CSS & Boostrap
+* React
+
+
+TEAM MEMEBERS
+==============
+* B M C S Basnayake   IT16158764    chathurangabasnayake@outlook.com
+* H S K Wijesekara    IT16130562

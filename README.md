@@ -7,13 +7,13 @@ Web Based Progressive Care Unit Application using MERN (MongoDB, ExpressJS, Reac
 
 BackEnd Technologies (API)
 ---------------------
-* ExpressJS
+* Express JS
 * Mongo DB
 
 FrontEnd Technologies
 --------------------
 * HTML, CSS & Boostrap
-* React
+* React JS
 
 
 TEAM MEMEBERS

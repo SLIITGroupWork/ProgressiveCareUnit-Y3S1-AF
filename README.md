@@ -18,5 +18,5 @@ FrontEnd Technologies
 
 TEAM MEMEBERS
 ==============
-* B M C S Basnayake   IT16158764    chathurangabasnayake@outlook.com
-* H S K Wijesekara    IT16130562
+* IT16158764 B.M.C.S Basnayake chathurangabasnayake@outlook.com
+* IT16130562 H.S.K Wijesekara    

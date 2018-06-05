@@ -1,0 +1,24 @@
+{
+  "name": "progressive-care-unit",
+  "version": "0.0.1",
+  "description": "\"This Progressive Care Unit project is for SLIIT 3rd year Application Framework Module\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SLIITGroupWork/ProgressiveCareUnit-Y3S1-AF.git"
+  },
+  "keywords": [
+    "SLIIT",
+    "PSU",
+    "AF"
+  ],
+  "author": "Chathuranga Basnayake",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SLIITGroupWork/ProgressiveCareUnit-Y3S1-AF/issues"
+  },
+  "homepage": "https://github.com/SLIITGroupWork/ProgressiveCareUnit-Y3S1-AF#readme"
+}

@@ -14,6 +14,10 @@ const applicationUserSchema = new Schema({
         type: String,
         require: true
     },
+    userLevel: {
+        type: String,
+        required: true
+    },
     isActive: {
         type: Boolean,
         required: true,

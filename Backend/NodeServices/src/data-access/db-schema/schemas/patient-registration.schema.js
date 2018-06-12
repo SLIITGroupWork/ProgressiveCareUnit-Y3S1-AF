@@ -14,9 +14,19 @@ const PatientRegistrationSchema = new Schema({
     contact: {
         type: String
     },
-    status: {
+    patientStatus: {
         type: String,
         required: true
+    },
+    patientGender: {
+        type: String,
+        required: true
+    },
+    priority: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 10
     },
     registeredTime: {
         type: Date,

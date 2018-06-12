@@ -1,6 +1,0 @@
-com\progressiveCareUnit\models\Feedback.class
-com\progressiveCareUnit\services\FeedbackServiceImpl.class
-com\progressiveCareUnit\repositories\FeedbackRepository.class
-com\progressiveCareUnit\controllers\FeedbackController.class
-com\progressiveCareUnit\Application.class
-com\progressiveCareUnit\services\FeedbackService.class

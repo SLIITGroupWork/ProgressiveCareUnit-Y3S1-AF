@@ -1,8 +1,10 @@
 var PrescriptionController = require('./Prescription.Controller');
 
-generateBill=(id)=>{
+var billGeneratorContoller = function(){
+    this.generateBill =(id)=>{
 
-    var 
 
+    }
 }
+ module.exports = new billGeneratorContoller();
 

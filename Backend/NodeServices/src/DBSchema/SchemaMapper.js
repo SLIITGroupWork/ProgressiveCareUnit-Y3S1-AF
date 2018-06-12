@@ -54,9 +54,9 @@ const prescriptionDrugsSchema = new Schema({
 
 });
 Mongoose.model('Comment', CommentSchema);
-Mongoose.model('PresciptionSchema', PresciptionSchema);
-Mongoose.model('DrugsSchema', DrugsSchema);
-Mongoose.model('prescriptionDrugsSchema', prescriptionDrugsSchema);
+Mongoose.model('Presciption', PresciptionSchema);
+Mongoose.model('drugs', DrugsSchema);
+Mongoose.model('prescriptionDrugs', prescriptionDrugsSchema);
 
 Mongoose.connect('mongodb://localhost:27017/comments', (err) => {
     if (err) {

@@ -1,16 +1,15 @@
 var mongoose        = require('../DBSchema/SchemaMapper');
-var PresciptionSchema   = mongoose.model('Presciption');
+var DrugSchema   = mongoose.model('drugs');
 
-var PresciptionController = function() {
+var DrugController = function() {
     this.insert = (data) => {
         return new Promise((resolve, reject) => {
-            var prescription = new PresciptionController({
-                patientId:data.patientId,
-                doctorId:data.doctorId,
-                date: new Date(year, month, day),
+            var Drug = new DrugController({
+                drugName:data.drugname,
+                price:data.price
             });
-            prescription.save().then(() => {
-                resolve({status: 200, message: "Added new prescription"});
+            Drug.save().then(() => {
+                resolve({status: 200, message: "Added new Drug"});
             }).catch(err => {
                 reject({status: 500, message: "Error:- "+err});
             });
@@ -19,26 +18,26 @@ var PresciptionController = function() {
 
     this.searchAll = () => {
         return new Promise((resolve, reject) => {
-            PresciptionSchema.find().populate('User').exec().then(data => {
+            DrugSchema.find().populate('User').exec().then(data => {
                 resolve({status: 200, data: data});
             }).catch(err => {
                 reject({status: 500, message: "Error:- " + err});
             });
         });
     }
-    this.searchOne = (id) => {
+    this.searchOne = (name) => {
         return new Promise((resolve, reject) => {
-            PresciptionSchema.find({patientId:id}).populate('User').exec().then(data => {
+            DrugSchema.find({drugName:name}).populate('User').exec().then(data => {
                 resolve({status: 200, data: data});
             }).catch(err => {
                 reject({status: 500, message: "Error:- " + err});
             });
         })
     }
-    this.update = (id, body) => {
+    this.update = (name, body) => {
         return new Promise((resolve, reject) => {
-            PresciptionSchema.update({patientId:id}, body).then(data => {
-                resolve({status: 200, message:"Updated prescription."});
+            DrugSchema.update({drugName:name}, body).then(data => {
+                resolve({status: 200, message:"Updated Drug."});
             }).catch(err => {
                 reject({status: 500, message: "Error:- " + err});
             });
@@ -46,5 +45,5 @@ var PresciptionController = function() {
     }
 }
 
-module.exports = new PresciptionController();
+module.exports = new DrugController();
 

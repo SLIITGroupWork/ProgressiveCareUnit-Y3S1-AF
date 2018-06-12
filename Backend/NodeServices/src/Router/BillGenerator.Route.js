@@ -1,4 +1,4 @@
-const express = reqiure('Express');
+const express = require('Express');
 const router = express.Router();
 const PDFDocument = require('pdfkit');
 const BillGeneratorController = require('../Controller/BillGenerate.Controller');

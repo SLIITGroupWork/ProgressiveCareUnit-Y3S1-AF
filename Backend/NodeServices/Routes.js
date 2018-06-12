@@ -1,8 +1,8 @@
-const Express = require('express');
+const express = require('express');
+const routes = express.Router();
 
-var Routes = Express.Router();
-var FeedbackRoute = require('./src/Router/Comment.Router');
+const patientRegistrationRoutes = require('./src/controller-routers/patient-registration.routes');
 
-Routes.use('/feedbacks', FeedbackRoute);
+routes.use('/patient-registration', patientRegistrationRoutes);
 
-module.exports = Routes;
+module.exports = routes;

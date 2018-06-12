@@ -1,8 +1,8 @@
 const express = require('express');
-const routers = express.Router();
+const router = express.Router();
 const patientRegistrationController = require('../controllers/patient-registrations.controller');
 
-routers.get('/', (request, response) => {
+router.get('/', (request, response) => {
 
     patientRegistrationController.getAllPatientRegistrations().then(data => {
         response.status(data.status).send(data);
@@ -11,7 +11,7 @@ routers.get('/', (request, response) => {
     });
 });
 
-routers.post('/', (request, response) => {
+router.post('/', (request, response) => {
 
     patientRegistrationController.insertPatientRegistration(request.body).then(data => {
         response.status(data.status).send(data);
@@ -20,4 +20,4 @@ routers.post('/', (request, response) => {
     });
 });
 
-module.exports = routers;
+module.exports = router;

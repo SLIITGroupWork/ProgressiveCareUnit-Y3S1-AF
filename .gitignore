@@ -25,6 +25,7 @@ Backend/SpringServices/nbbuild/*
 Backend/SpringServices/dist/*
 Backend/SpringServices/nbdist/*
 Backend/SpringServices/.nb-gradle/*
+Backend/SpringServices/target/*
 
 ### Node Modules ###
 Backend/NodeServices/node_modules/*

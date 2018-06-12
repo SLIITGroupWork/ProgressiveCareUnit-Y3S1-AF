@@ -17,6 +17,8 @@ Backend/SpringServices/.idea/*
 *.ipr
 
 ### NetBeans ###
+.idea/*
+
 Backend/SpringServices/nbproject/private/*
 Backend/SpringServices/build/*
 Backend/SpringServices/nbbuild/*

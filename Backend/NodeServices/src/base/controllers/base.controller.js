@@ -1,6 +1,6 @@
 const createResponse = require('../../data-trans-objects/response');
 const createRequest = require('../../data-trans-objects/resquest');
-const statusCodes = require('../../consts/http-status');
+const statusCodes = require('../../consts/http-status.consts');
 
 module.exports = class BaseController {
 

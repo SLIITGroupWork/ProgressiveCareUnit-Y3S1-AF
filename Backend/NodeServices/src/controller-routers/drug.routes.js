@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const patientRegistrationController = require('../controllers/patient-registrations.controller');
+const drugController = require('../controllers/drug.controller');
 
 router.get('/', (request, response) => {
 
-    patientRegistrationController.getAllPatientRegistrations().then(data => {
+    drugController.getAllDrugDetails().then(data => {
         response.status(data.status).send(data);
     }).catch(err => {
         response.status(err.status).send(err);
@@ -13,11 +13,22 @@ router.get('/', (request, response) => {
 
 router.post('/', (request, response) => {
 
-    patientRegistrationController.insertPatientRegistration(request.body).then(data => {
+    drugController.insertDrug(request.body).then(data => {
         response.status(data.status).send(data);
     }).catch(err => {
         response.status(err.status).send(err);
     });
 });
+
+router.get('/:name', (request, response) => {
+
+    drugController.getDrugDetailsByName(request.param.name).then(data => {
+        response.status(data.status).send(data);
+    }).catch(err => {
+        response.status(err.status).send(err);
+    });
+});
+
+
 
 module.exports = router;

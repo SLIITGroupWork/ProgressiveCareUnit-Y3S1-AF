@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const routes = require('./routes');
+const apiRoutes = require('./src/api.routes');
 const appConfigs = require('./appConfig');
 
 const app = express();
@@ -17,7 +17,7 @@ mongoose.connect(appConfigs.mongoURI, err => {
 });
 
 app.use(bodyParser.json());
-app.use('/api', routes);
+app.use('/api', apiRoutes);
 
 // Node server configuration
 app.listen(appConfigs.serverPort, 'localhost', err => {

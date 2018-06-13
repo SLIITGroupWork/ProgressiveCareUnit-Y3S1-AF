@@ -11,5 +11,7 @@ module.exports = {
 
     Comments: 'Comments',
     Doctor: 'Doctor',
-    DoctorPatient: 'DoctorPatient'
+    DoctorPatient: 'DoctorPatient',
+    
+    PatientAllergies: 'PatientAllergies',
 }

@@ -1,5 +1,5 @@
 const BaseController = require('../base/controllers/base.controller');
-const patientRegistrationService = require('../services/patient-registration.service');
+const patientRegistrationService = require('../services/patient-registrations.service');
 
 class PatientRegistrationController extends BaseController {
 
@@ -7,24 +7,34 @@ class PatientRegistrationController extends BaseController {
 
         return new Promise((resolve, reject) => {
 
-            patientRegistrationService.getAllPatientRegistrations().then(data => {
-                resolve(this.createResponse(this.statusCodes.OK, true, data));
+            patientRegistrationService.getAllPatientRegistrations().then(patients => {
+                resolve(this.createResponse(this.statusCodes.OK, patients));
             }).catch(err => {
-                reject(this.createResponse(this.statusCodes.InternalServerError, false, [], err));
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });
     }
 
-    insertPatientRegistration(patientRegistrationData) {
+    getPatientRegistrationById(patientId) {
 
         return new Promise((resolve, reject) => {
 
-            let request = this.createRequest(patientRegistrationData);
-
-            patientRegistrationService.addNewPatientRegistration(request.data).then(data => {
-                resolve(this.createResponse(this.statusCodes.Created, true, data));
+            patientRegistrationService.getPatientRegistrationById(patientId).then(patient => {
+                resolve(this.createResponse(this.statusCodes.OK, patient));
             }).catch(err => {
-                reject(this.createResponse(this.statusCodes.InternalServerError, false, [], err));
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
+    insertPatientRegistration(patientRegistrationRequest) {
+
+        return new Promise((resolve, reject) => {
+
+            patientRegistrationService.addNewPatientRegistration(patientRegistrationRequest.data).then(patient => {
+                resolve(this.createResponse(this.statusCodes.Created, patient));
+            }).catch(err => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });
     }

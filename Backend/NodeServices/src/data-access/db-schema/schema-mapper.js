@@ -11,7 +11,10 @@ const presciptionSchema = require('./schemas/presciption.schema');
 const drugsSchema = require('./schemas/drug.schema');
 const prescriptionDrugsSchema = require('./schemas/prescription-drug.schema');
 
+const patientAllergiesSchema=require('./schemas/patient-allergies.schema');
+
 const commentSchema = require('./schemas/user.scema');
+
 
 // Create Mongo models
 mongoose.model(tableNames.Users, userSchema);
@@ -22,6 +25,8 @@ mongoose.model(tableNames.ApplicationUsers, applicationUserSchema);
 mongoose.model(tableNames.Presciptions, presciptionSchema);
 mongoose.model(tableNames.Drugs, drugsSchema);
 mongoose.model(tableNames.PrescriptionDrugs, prescriptionDrugsSchema);
+
+mongoose.model(tableNames.PatientAllergies, patientAllergiesSchema);
 
 mongoose.model(tableNames.Comments, commentSchema);
 

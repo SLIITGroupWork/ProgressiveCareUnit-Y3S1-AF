@@ -12,7 +12,7 @@ module.exports = class BaseController {
         return createRequest(request);
     }
 
-    createResponse(status, isSuccess, data = null, message = null) {
-        return createResponse(status, isSuccess, data, message);
+    createResponse(status, data = [], message = null, removeProperties = []) {
+        return createResponse(status, data, message, removeProperties);
     }
 }

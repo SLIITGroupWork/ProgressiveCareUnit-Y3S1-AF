@@ -1,7 +1,9 @@
 
-const createResponse = (status, data = [], message = null, removeProperties = []) => {
+const createResponse = (status, data = [], message = null, removeProperties = [], isSuccess = null) => {
 
-    let isSuccess = (status >= 100 && status < 400) ? true : false;
+    if (isSuccess === null) {
+        isSuccess = (status >= 100 && status < 400) ? true : false;
+    }
     
     if (!(isSuccess || message)) {
         message = "Something went wrong...";

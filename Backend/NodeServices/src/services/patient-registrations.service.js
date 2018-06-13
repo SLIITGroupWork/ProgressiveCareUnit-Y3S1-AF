@@ -15,6 +15,18 @@ class PatientRegistrationService extends BaseService {
         });
     }
 
+    getPatientRegistrationById(id) {
+
+        return new Promise((resolve, reject) => {
+
+            this.unitOfWork.patientRegistrationSchema.findOne({ _id: id }).exec().then(patient => {
+                resolve(patient);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
     addNewPatientRegistration(patientRegistrationData) {
 
         return new Promise((resolve, reject) => {

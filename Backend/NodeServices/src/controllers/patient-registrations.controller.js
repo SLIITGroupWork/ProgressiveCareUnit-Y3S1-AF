@@ -1,5 +1,5 @@
 const BaseController = require('../base/controllers/base.controller');
-const patientRegistrationService = require('../services/patient-registration.service');
+const patientRegistrationService = require('../services/patient-registrations.service');
 
 class PatientRegistrationController extends BaseController {
 
@@ -15,13 +15,23 @@ class PatientRegistrationController extends BaseController {
         });
     }
 
-    insertPatientRegistration(patientRegistrationData) {
+    getPatientRegistrationById(patientId) {
 
         return new Promise((resolve, reject) => {
 
-            let request = this.createRequest(patientRegistrationData);
+            patientRegistrationService.getPatientRegistrationById(patientId).then(patient => {
+                resolve(this.createResponse(this.statusCodes.OK, patient));
+            }).catch(err => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
 
-            patientRegistrationService.addNewPatientRegistration(request.data).then(patient => {
+    insertPatientRegistration(patientRegistrationRequest) {
+
+        return new Promise((resolve, reject) => {
+
+            patientRegistrationService.addNewPatientRegistration(patientRegistrationRequest.data).then(patient => {
                 resolve(this.createResponse(this.statusCodes.Created, patient));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));

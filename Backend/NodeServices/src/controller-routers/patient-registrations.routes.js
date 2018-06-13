@@ -1,6 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const patientRegistrationController = require('../controllers/patient-registrations.controller');
+const createRequest = require('../data-trans-objects/resquest');
+
+
+
+router.get('/:id', (request, response) => {
+
+    patientRegistrationController.getPatientRegistrationById(request.params.id).then(patientsResponse => {
+        response.status(patientsResponse.status).send(patientsResponse);
+    }).catch(err => {
+        response.status(err.status).send(err);
+    });
+});
 
 router.get('/', (request, response) => {
 
@@ -13,7 +25,9 @@ router.get('/', (request, response) => {
 
 router.post('/', (request, response) => {
 
-    patientRegistrationController.insertPatientRegistration(request.body).then(patientsResponse => {
+    let patientRegistrationRequest = createRequest(request.body);
+
+    patientRegistrationController.insertPatientRegistration(patientRegistrationRequest).then(patientsResponse => {
         response.status(patientsResponse.status).send(patientsResponse);
     }).catch(err => {
         response.status(err.status).send(err);

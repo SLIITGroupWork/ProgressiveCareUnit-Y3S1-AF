@@ -11,7 +11,7 @@ const presciptionSchema = require('./schemas/presciption.schema');
 const drugsSchema = require('./schemas/drug.schema');
 const prescriptionDrugsSchema = require('./schemas/prescription-drug.schema');
 
-const patientAllergiesSchema=require('./schemas/patient-allergies.schema');
+const patientAllergiesSchema = require('./schemas/patient-allergies.schema');
 
 const commentSchema = require('./schemas/user.scema');
 

@@ -5,5 +5,6 @@ module.exports = {
     
     BadRequest: 400,
     Unauthorized: 401,
+    Conflict: 409,
     InternalServerError: 500
 }

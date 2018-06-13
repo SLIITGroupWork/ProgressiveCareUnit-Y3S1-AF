@@ -3,7 +3,8 @@ const router = express.Router();
 const patientRegistrationController = require('../controllers/patient-registrations.controller');
 const createRequest = require('../data-trans-objects/resquest');
 
-router.get('/:id', (request, response) => {
+/// need change
+router.get('/', (request, response) => {
 
     patientRegistrationController.getPatientRegistrationById(request.params.id).then(patientsResponse => {
         response.status(patientsResponse.status).send(patientsResponse);

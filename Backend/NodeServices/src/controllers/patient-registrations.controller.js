@@ -7,10 +7,10 @@ class PatientRegistrationController extends BaseController {
 
         return new Promise((resolve, reject) => {
 
-            patientRegistrationService.getAllPatientRegistrations().then(data => {
-                resolve(this.createResponse(this.statusCodes.OK, true, data));
+            patientRegistrationService.getAllPatientRegistrations().then(patients => {
+                resolve(this.createResponse(this.statusCodes.OK, patients));
             }).catch(err => {
-                reject(this.createResponse(this.statusCodes.InternalServerError, false, [], err));
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });
     }
@@ -21,10 +21,10 @@ class PatientRegistrationController extends BaseController {
 
             let request = this.createRequest(patientRegistrationData);
 
-            patientRegistrationService.addNewPatientRegistration(request.data).then(data => {
-                resolve(this.createResponse(this.statusCodes.Created, true, data));
+            patientRegistrationService.addNewPatientRegistration(request.data).then(patient => {
+                resolve(this.createResponse(this.statusCodes.Created, patient));
             }).catch(err => {
-                reject(this.createResponse(this.statusCodes.InternalServerError, false, [], err));
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });
     }

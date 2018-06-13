@@ -4,8 +4,8 @@ const patientRegistrationController = require('../controllers/patient-registrati
 
 router.get('/', (request, response) => {
 
-    patientRegistrationController.getAllPatientRegistrations().then(data => {
-        response.status(data.status).send(data);
+    patientRegistrationController.getAllPatientRegistrations().then(patientsResponse => {
+        response.status(patientsResponse.status).send(patientsResponse);
     }).catch(err => {
         response.status(err.status).send(err);
     });
@@ -13,8 +13,8 @@ router.get('/', (request, response) => {
 
 router.post('/', (request, response) => {
 
-    patientRegistrationController.insertPatientRegistration(request.body).then(data => {
-        response.status(data.status).send(data);
+    patientRegistrationController.insertPatientRegistration(request.body).then(patientsResponse => {
+        response.status(patientsResponse.status).send(patientsResponse);
     }).catch(err => {
         response.status(err.status).send(err);
     });

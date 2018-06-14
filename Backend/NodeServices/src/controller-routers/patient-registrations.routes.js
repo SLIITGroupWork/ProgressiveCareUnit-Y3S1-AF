@@ -4,7 +4,7 @@ const patientRegistrationController = require('../controllers/patient-registrati
 const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
-router.get('/:id', (request, response) => {
+router.get('/getPatientRegistrationById/:id', (request, response) => {
 
     patientRegistrationController.getPatientRegistrationById(request.params.id).then(patientsResponse => {
         response.status(patientsResponse.status).send(patientsResponse);
@@ -13,7 +13,7 @@ router.get('/:id', (request, response) => {
     });
 });
 
-router.get('/', (request, response) => {
+router.get('/getAllPatientRegistrations', (request, response) => {
 
     patientRegistrationController.getAllPatientRegistrations().then(patientsResponse => {
         response.status(patientsResponse.status).send(patientsResponse);
@@ -22,11 +22,11 @@ router.get('/', (request, response) => {
     });
 });
 
-router.post('/', (request, response) => {
+router.post('/addNewPatientRegistration', (request, response) => {
 
     let patientRegistrationRequest = createRequest(request.body);
 
-    patientRegistrationController.insertPatientRegistration(patientRegistrationRequest).then(patientsResponse => {
+    patientRegistrationController.addNewPatientRegistration(patientRegistrationRequest).then(patientsResponse => {
         response.status(patientsResponse.status).send(patientsResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);

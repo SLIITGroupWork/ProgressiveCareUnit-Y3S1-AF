@@ -27,7 +27,7 @@ class PatientRegistrationController extends BaseController {
         });
     }
 
-    insertPatientRegistration(patientRegistrationRequest) {
+    addNewPatientRegistration(patientRegistrationRequest) {
 
         return new Promise((resolve, reject) => {
 

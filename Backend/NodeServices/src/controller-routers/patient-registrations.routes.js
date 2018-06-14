@@ -13,6 +13,24 @@ router.get('/getPatientRegistrationById/:id', (request, response) => {
     });
 });
 
+router.get('/getPatientRegistrationByReferenceNo/:referenceNo', (request, response) => {
+
+    patientRegistrationController.getPatientRegistrationByReferenceNo(request.params.referenceNo).then(patientsResponse => {
+        response.status(patientsResponse.status).send(patientsResponse);
+    }).catch(err => {
+        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
+    });
+});
+
+router.get('/getUnassignedPatientRegistrations', (request, response) => {
+
+    patientRegistrationController.getUnassignedPatientRegistrations().then(patientsResponse => {
+        response.status(patientsResponse.status).send(patientsResponse);
+    }).catch(err => {
+        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
+    });
+});
+
 router.get('/getAllPatientRegistrations', (request, response) => {
 
     patientRegistrationController.getAllPatientRegistrations().then(patientsResponse => {
@@ -32,5 +50,16 @@ router.post('/addNewPatientRegistration', (request, response) => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     });
 });
+
+router.post('/assignUserToPatientRegistration', (request, response) => {
+
+    let userPatientRegistrationDataRequest = createRequest(request.body);
+
+    patientRegistrationController.assignUserToPatientRegistration(userPatientRegistrationDataRequest).then(userPatientRegistrationDataResponse => {
+        response.status(userPatientRegistrationDataResponse.status).send(userPatientRegistrationDataResponse);
+    }).catch(err => {
+        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
+    });
+})
 
 module.exports = router;

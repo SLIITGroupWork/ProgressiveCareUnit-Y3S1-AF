@@ -15,11 +15,35 @@ class PatientRegistrationController extends BaseController {
         });
     }
 
+    getUnassignedPatientRegistrations() {
+
+        return new Promise((resolve, reject) => {
+
+            patientRegistrationService.getPatientRegistrationsByMappedStatus().then(patients => {
+                resolve(this.createResponse(this.statusCodes.OK, patients));
+            }).catch(err => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
     getPatientRegistrationById(patientId) {
 
         return new Promise((resolve, reject) => {
 
             patientRegistrationService.getPatientRegistrationById(patientId).then(patient => {
+                resolve(this.createResponse(this.statusCodes.OK, patient));
+            }).catch(err => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
+    getPatientRegistrationByReferenceNo(referenceNo) {
+
+        return new Promise((resolve, reject) => {
+
+            patientRegistrationService.getPatientRegistrationByReferenceNo(referenceNo).then(patient => {
                 resolve(this.createResponse(this.statusCodes.OK, patient));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
@@ -34,6 +58,25 @@ class PatientRegistrationController extends BaseController {
             patientRegistrationService.addNewPatientRegistration(patientRegistrationRequest.data).then(patient => {
                 resolve(this.createResponse(this.statusCodes.Created, patient));
             }).catch(err => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
+    assignUserToPatientRegistration(userPatientRegistrationDataRequest) {
+
+        return new Promise((resolve, reject) => {
+
+            patientRegistrationService.assignUserToPatientRegistration(userPatientRegistrationDataRequest.data).then(userPatientRegistrationData => {
+
+                if (userPatientRegistrationData) {
+                    resolve(this.createResponse(this.statusCodes.OK, userPatientRegistrationData));
+                }
+                else {
+                    resolve(this.createResponse(this.statusCodes.BadRequest, null, "NIC or Reference invalid"));
+                }
+            }).catch(err => {
+                console.log(err);
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });

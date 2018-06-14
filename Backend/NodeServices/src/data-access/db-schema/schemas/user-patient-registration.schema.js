@@ -8,13 +8,14 @@ const userPatientRegistrationSchema = new Schema({
         ref: tableNames.Users,
         require: true
     },
-    patientRegistration: {
+    patientRegistrationId: {
         type: Schema.Types.ObjectId,
         ref: tableNames.PatientRegistrations,
-        require: true
+        require: true,
+        unique: true
     }
 });
 
-userPatientRegistrationSchema.index({ userId: 1, patientRegistration: -1 }, { unique: true })
+
 
 module.exports = userPatientRegistrationSchema;

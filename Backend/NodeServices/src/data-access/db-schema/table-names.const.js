@@ -9,7 +9,9 @@ module.exports = {
     Drugs: 'Drugs',
     PrescriptionDrugs: 'PrescriptionDrugs',
 
-    PatientAllergies:'PatientAllergies',
-
-    Comments: 'Comments'
+    Comments: 'Comments',
+    Doctor: 'Doctor',
+    DoctorPatient: 'DoctorPatient',
+    
+    PatientAllergies: 'PatientAllergies',
 }

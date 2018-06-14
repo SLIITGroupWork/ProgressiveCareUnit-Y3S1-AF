@@ -7,8 +7,20 @@ class PatientRegistrationService extends BaseService {
 
         return new Promise((resolve, reject) => {
 
-            this.unitOfWork.patientRegistrationSchema.find().exec().then(data => {
-                resolve(data);
+            this.unitOfWork.patientRegistrationSchema.find().exec().then(patients => {
+                resolve(patients);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
+    getPatientRegistrationById(id) {
+
+        return new Promise((resolve, reject) => {
+
+            this.unitOfWork.patientRegistrationSchema.findOne({ _id: id }).exec().then(patient => {
+                resolve(patient);
             }).catch(err => {
                 reject(err);
             });
@@ -28,8 +40,8 @@ class PatientRegistrationService extends BaseService {
                 priority: patientRegistrationData.priority
             });
 
-            patient.save().then(data => {
-                resolve(data);
+            patient.save().then(patient => {
+                resolve(patient);
             }).catch(err => {
                 reject(err);
             });

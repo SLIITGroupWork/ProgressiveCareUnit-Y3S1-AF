@@ -24,9 +24,6 @@ const createPassword = (password) => {
     let newPassword = '';
 
     let salt = bcrypt.genSaltSync(10);
-    console.log(salt);
-    salt = bcrypt.genSaltSync(10);
-    console.log(salt);
     newPassword = bcrypt.hashSync(password, salt);
     
     return newPassword;

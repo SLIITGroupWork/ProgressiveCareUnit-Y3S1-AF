@@ -4,7 +4,7 @@ const usersController = require('../controllers/users.controller');
 const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
-/// need change
+
 router.get('/getUserById/:id', (request, response) => {
 
     usersController.getUserById(request.params.id).then(usersResponse => {

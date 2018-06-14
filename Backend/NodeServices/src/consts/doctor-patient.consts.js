@@ -1,7 +1,7 @@
 
 module.exports = {
     treatmentStatus: {
-        OBSERVING: "OBSERVING",
-        FINISHED: "FINISHED"
+        TREATING: "TREATING",
+        TREATED: "TREATED"
     }
 }

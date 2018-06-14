@@ -16,7 +16,7 @@ const doctorPatientSchema = new Schema({
     treatmentStatus: {
         type: String,
         require: true
-    },
+    }
 });
 
 module.exports = doctorPatientSchema;

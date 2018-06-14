@@ -15,15 +15,17 @@ const doctorSchema = new Schema({
         require: true,
         unique: true
     },
+    phoneNumber: {
+        type: String,
+        require: true
+    },
     doctorStatus: {
         type: String,
         require: true
     },
-    priority: {
-        type: Number,
-        required: true,
-        min: 1,
-        max: 5
+    specialization : {
+        type: String,
+        require: false
     }
 });
 

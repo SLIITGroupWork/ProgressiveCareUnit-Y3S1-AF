@@ -8,7 +8,7 @@ class UserService extends BaseService {
         return new Promise((resolve, reject) => {
 
             unitOfWork.userSchema.findOne({ nic: nic }, { _id: true }).exec().then(data => {
-                resolve(!Boolean(_id));
+                resolve(!(data));
             }).catch(err => {
                 reject(err);
             });
@@ -16,9 +16,8 @@ class UserService extends BaseService {
     }
 
     getAllUsers() {
-        
-        return new Promise((resolve, reject) => {
 
+        return new Promise((resolve, reject) => {
             unitOfWork.userSchema.find().exec().then(users => {
                 resolve(users);
             }).catch(err => {
@@ -39,7 +38,7 @@ class UserService extends BaseService {
         });
     }
 
-    getUserById(nic) {
+    getUserByNIC(nic) {
 
         return new Promise((resolve, reject) => {
 
@@ -54,7 +53,6 @@ class UserService extends BaseService {
     addNewUser(user) {
 
         return new Promise((resolve, reject) => {
-
             this._checkUserNICValid(user.nic).then(isValid => {
 
                 if (isValid) {
@@ -69,7 +67,7 @@ class UserService extends BaseService {
 
                     userSchema.save().then(user => {
                         resolve(user);
-                    }).reject(err => {
+                    }).catch(err => {
                         reject(err);
                     });
                 }
@@ -78,7 +76,31 @@ class UserService extends BaseService {
                 }
             }).catch(err => {
                 reject(err);
-            });            
+            });
+        });
+    }
+
+    updateUser(user) {
+
+        return new Promise((resolve, reject) => {
+
+            unitOfWork.userSchema.findOneAndUpdate({ nic: user.nic },
+                {
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    gender: user.gender,
+                    contact: user.contact
+                }
+            ).then(data => {
+                if (data) {
+                    resolve(user);
+                }
+                else {
+                    resolve(null);
+                }
+            }).catch(err => {
+                reject(err);
+            });
         });
     }
 }

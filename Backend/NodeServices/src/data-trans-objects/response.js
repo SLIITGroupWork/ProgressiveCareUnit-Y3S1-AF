@@ -44,7 +44,6 @@ const createResponse = (status, data = [], message = null, removeProperties = []
 
         newData.push(tempData);
     }
-
     return {
         status: status,
         isSuccess: isSuccess,

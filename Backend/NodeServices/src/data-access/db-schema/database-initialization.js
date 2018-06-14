@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 const appConfigs = require('../../../appConfig');
 const applicationUserConsts = require('../../consts/application-user.consts');
 const userConsts = require('../../consts/user.consts');
@@ -19,7 +21,15 @@ const sleep = (milliseconds) => {
 // For encry password
 const createPassword = (password) => {
 
-    return password;
+    let newPassword = '';
+
+    let salt = bcrypt.genSaltSync(10);
+    console.log(salt);
+    salt = bcrypt.genSaltSync(10);
+    console.log(salt);
+    newPassword = bcrypt.hashSync(password, salt);
+    
+    return newPassword;
 }
 
 //For seed the database

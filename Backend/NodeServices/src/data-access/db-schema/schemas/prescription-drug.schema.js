@@ -3,12 +3,6 @@ const Schema = mongoose.Schema;
 const tableNames = require('../table-names.const');
 
 const prescriptionDrugsSchema = new Schema({
-    regId:[{
-        type:Schema.Types.ObjectId,
-        ref:tableNames.PatientRegistrationSchema,
-        require:true
-
-    }],
     presID: [{
         type: Schema.Types.ObjectId,
         ref: tableNames.Presciptions,

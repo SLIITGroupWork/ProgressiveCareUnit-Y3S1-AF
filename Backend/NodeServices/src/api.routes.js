@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const patientRegistrationsRoutes = require('./controller-routers/patient-registrations.routes');
+const patientRegistrationsRoutes = require('./controller-routers/patient-registration.routes');
 const usersRoutes = require('./controller-routers/user.routes');
 
 router.use('/patient-registrations', patientRegistrationsRoutes);

@@ -7,14 +7,6 @@ const appConfigs = require('./appConfig');
 
 const app = express();
 
-// Connection to the Mongo DB
-mongoose.connect(appConfigs.mongoURI, err => {
-    if (err) {
-        console.log(err);
-        process.exit(-2);
-    }
-    console.log('Connected to the Database');
-});
 
 app.use(bodyParser.json());
 app.use('/api', apiRoutes);
@@ -25,5 +17,5 @@ app.listen(appConfigs.serverPort, 'localhost', err => {
         console.log(err);
         process.exit(-1);
     }
-    console.log(`Server is up in port ${appConfigs.serverPort}`);
+    console.log(`Server is up in port ${appConfigs.serverPort}...`);
 });

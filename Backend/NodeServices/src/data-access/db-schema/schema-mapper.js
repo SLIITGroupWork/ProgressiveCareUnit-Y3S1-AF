@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const tableNames = require('./table-names.const');
+const databaseInit = require('./database-initialization');
 
 // Importing schemas
 const userSchema = require('./schemas/user.scema');
@@ -33,5 +34,8 @@ mongoose.model(tableNames.PatientAllergies, patientAllergiesSchema);
 mongoose.model(tableNames.Comments, commentSchema);
 mongoose.model(tableNames.Doctor, doctorSchema);
 mongoose.model(tableNames.DoctorPatient, doctorPatientSchema);
+
+// Connection to the Mongo DB
+databaseInit(mongoose);
 
 module.exports = mongoose;

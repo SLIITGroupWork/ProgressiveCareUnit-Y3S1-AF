@@ -33,13 +33,10 @@ mongoose.model(tableNames.PrescriptionDrugs, prescriptionDrugsSchema);
 mongoose.model(tableNames.bill, billSchema);
 
 mongoose.model(tableNames.PatientAllergies, patientAllergiesSchema);
-mongoose.model(tableNames.patientPhysicalExams, patientPhysicalExamsSchema);
+mongoose.model(tableNames.PatientPhysicalExams, patientPhysicalExamsSchema);
 
 mongoose.model(tableNames.Comments, commentSchema);
 mongoose.model(tableNames.Doctor, doctorSchema);
 mongoose.model(tableNames.DoctorPatient, doctorPatientSchema);
-
-// // Connection to the Mongo DB
-// databaseInit(mongoose);
 
 module.exports = mongoose;

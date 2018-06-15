@@ -4,8 +4,8 @@ const usersController = require('../controllers/users.controller');
 const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
-/// need change
-router.get('/:id/id', (request, response) => {
+
+router.get('/getUserById/:id', (request, response) => {
 
     usersController.getUserById(request.params.id).then(usersResponse => {
         response.status(usersResponse.status).send(usersResponse);
@@ -14,7 +14,7 @@ router.get('/:id/id', (request, response) => {
     });
 });
 
-router.get('/:nic', (request, response) => {
+router.get('/getUserByNIC/:nic', (request, response) => {
 
     usersController.getUserByNIC(request.params.nic).then(usersResponse => {
         response.status(usersResponse.status).send(usersResponse);
@@ -23,7 +23,9 @@ router.get('/:nic', (request, response) => {
     });
 });
 
-router.get('/', (request, response) => {
+router.get('/getAllUsers', (request, response) => {
+
+    console.log(request.user)
 
     usersController.getAllUsers().then(usersResponse => {
         response.status(usersResponse.status).send(usersResponse);
@@ -32,7 +34,7 @@ router.get('/', (request, response) => {
     });
 });
 
-router.post('/', (request, response) => {
+router.post('/addNewUser', (request, response) => {
 
     let userRequest = createRequest(request.body);
 
@@ -43,7 +45,7 @@ router.post('/', (request, response) => {
     });
 });
 
-router.put('/', (request, response) => {
+router.put('/updateUser', (request, response) => {
 
     let userRequest = createRequest(request.body);
 

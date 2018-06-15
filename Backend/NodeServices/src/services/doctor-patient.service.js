@@ -10,10 +10,10 @@ class DoctorPatientService extends BaseService {
                 patientId: doctorPatient.patientId,
                 treatmentStatus: doctorPatientConsts.treatmentStatus.TREATING
             });
-            doctorPatient.save().then(data => {
-                resolve(data);
+            doctorPatient.save().then(() => {
+                resolve({message: "Doctor-Patient Inserted"});
             }).catch(err => {
-                reject(err);
+                reject({message: err});
             });
         });
     }
@@ -21,10 +21,10 @@ class DoctorPatientService extends BaseService {
     updateDoctorPatientStatus(id, status) {
         return new Promise((resolve, reject) => {
             this.unitOfWork.doctorPatientSchema.update({ _id: id },{ $set:{ treatmentStatus: status }
-            }).then((data) => {
-                resolve(data);
+            }).then(() => {
+                resolve({message: "Status is Updated"});
             }).catch((err) => {
-                reject(err);
+                reject({message: err});
             });
         });
     }
@@ -33,9 +33,9 @@ class DoctorPatientService extends BaseService {
         return new Promise((resolve, reject) => {
             this.unitOfWork.doctorPatientSchema.find({ treatmentStatus: doctorPatientConsts.treatmentStatus.TREATING 
             }).then((data) => {
-                resolve(data);
+                resolve({data: data});
             }).catch((err) => {
-                reject(err);
+                reject({message: err});
             });
         });
     }

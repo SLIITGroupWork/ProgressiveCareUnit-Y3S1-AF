@@ -31,8 +31,8 @@ class PatientRegistrationController extends BaseController {
 
         return new Promise((resolve, reject) => {
 
-            patientRegistrationService.addNewPatientRegistration(patientRegistrationRequest.data).then(patient => {
-                resolve(this.createResponse(this.statusCodes.Created, patient));
+            patientRegistrationService.addNewPatientRegistration(patientRegistrationRequest.data).then(bill => {
+                resolve(this.createResponse(this.statusCodes.Created, bill));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });

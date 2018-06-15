@@ -1,0 +1,1 @@
+module.exports = require('../data-access/db-schema/table-names.const');

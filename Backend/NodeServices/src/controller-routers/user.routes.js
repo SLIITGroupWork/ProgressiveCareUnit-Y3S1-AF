@@ -25,6 +25,8 @@ router.get('/getUserByNIC/:nic', (request, response) => {
 
 router.get('/getAllUsers', (request, response) => {
 
+    console.log(request.user)
+
     usersController.getAllUsers().then(usersResponse => {
         response.status(usersResponse.status).send(usersResponse);
     }).catch(err => {

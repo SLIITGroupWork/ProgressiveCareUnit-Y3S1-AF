@@ -63,6 +63,25 @@ class PatientRegistrationController extends BaseController {
         });
     }
 
+    updatePatientRegistration(patientRegistrationRequest) {
+
+        return new Promise((resolve, reject) => {
+
+            patientRegistrationService.updatePatientRegistration(patientRegistrationRequest.data).then(patient => {
+                if (patient) {
+                    resolve(this.createResponse(this.statusCodes.OK, patient));
+                }
+                else {
+                    resolve(this.createResponse(this.statusCodes.BadRequest, null, "Invaild reference no"));
+                }
+            }).catch(err => {
+                
+                console.log(err);
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
     assignUserToPatientRegistration(userPatientRegistrationDataRequest) {
 
         return new Promise((resolve, reject) => {
@@ -76,7 +95,6 @@ class PatientRegistrationController extends BaseController {
                     resolve(this.createResponse(this.statusCodes.BadRequest, null, "NIC or Reference invalid"));
                 }
             }).catch(err => {
-                console.log(err);
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });

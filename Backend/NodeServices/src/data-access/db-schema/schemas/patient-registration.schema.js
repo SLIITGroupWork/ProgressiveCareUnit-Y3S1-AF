@@ -24,6 +24,10 @@ const PatientRegistrationSchema = new Schema({
         type: String,
         required: true
     },
+    isTreated: {
+        type: Boolean,
+        default: false
+    },
     patientGender: {
         type: String,
         required: true

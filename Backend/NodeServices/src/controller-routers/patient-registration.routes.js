@@ -51,6 +51,17 @@ router.post('/addNewPatientRegistration', (request, response) => {
     });
 });
 
+router.put('/updatePatientRegistration', (request, response) => {
+
+    let patientRegistrationRequest = createRequest(request.body);
+
+    patientRegistrationController.updatePatientRegistration(patientRegistrationRequest).then(patientsResponse => {
+        response.status(patientsResponse.status).send(patientsResponse);
+    }).catch(err => {
+        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
+    });
+});
+
 router.post('/assignUserToPatientRegistration', (request, response) => {
 
     let userPatientRegistrationDataRequest = createRequest(request.body);

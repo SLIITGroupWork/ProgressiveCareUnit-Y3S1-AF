@@ -6,12 +6,74 @@ const appConfigs = require('../../appConfig');
 
 class AuthorizationsService extends BaseService {
 
+    _getApplicationUserByUsername(username) {
+
+        return new Promise((resolve, reject) => {
+            this.unitOfWork.applicationUserSchema.findOne({ username: username }).exec().then(applicationUser => {
+                resolve(applicationUser);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
+    _getApplicationUserWithoutPasswordByUsername(username) {
+
+        return new Promise((resolve, reject) => {
+            this.unitOfWork.applicationUserSchema.findOne({ username: username }, { password: false }).exec().then(applicationUser => {
+                resolve(applicationUser);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
+    _getUserByUserId(userId) {
+        return new Promise((resolve, reject) => {
+
+            this.unitOfWork.userSchema.findOne({ _id: userId }).then(user => {
+                resolve(user);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
+    getUserAndApplicationUserByUsernameForAuthentication(username) {
+
+        return new Promise((resolve, reject) => {
+
+            this._getApplicationUserWithoutPasswordByUsername(username.toLowerCase()).then(applicationUser => {
+
+                if (applicationUser) {
+
+                    this._getUserByUserId(applicationUser.userId).then(user => {
+                        
+                        const userAndApplicationUser = {
+                            applicationUser: applicationUser,
+                            user: user
+                        }
+
+                        resolve(userAndApplicationUser);
+                    }).catch(err => {
+                        reject(err);
+                    });
+                }
+                else {
+                    resolve(null);
+                }
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
+
     userLogin(loginData) {
 
         return new Promise((resolve, reject) => {
 
             let loginUsername = loginData.username.toLowerCase();
-            this.unitOfWork.applicationUserSchema.findOne({ username: loginUsername }).then(applicationUser => {
+            this._getApplicationUserByUsername(loginUsername).then(applicationUser => {
 
                 if (applicationUser) {
 
@@ -19,9 +81,9 @@ class AuthorizationsService extends BaseService {
 
                     if (isMatched) {
 
-                        this.unitOfWork.userSchema.findOne({ _id: applicationUser.userId }).then(user => {
+                        this._getUserByUserId(applicationUser.userId).then(user => {
 
-                            let currentTimeStamp = Math.round(new Date().getTime() / 1000);
+                            const currentTimeStamp = Math.round(new Date().getTime() / 1000);
 
                             const payload = {
                                 username: applicationUser.username,
@@ -29,13 +91,13 @@ class AuthorizationsService extends BaseService {
                                 firstName: user.firstName,
                                 lastName: user.lastName,
                                 issuedAt: currentTimeStamp,
-                                expireAt: currentTimeStamp + appConfigs.tokenKeyValidPeriod
+                                expiresIn: currentTimeStamp + appConfigs.tokenKeyValidPeriod
                             };
-
+                            
                             jwt.sign(
-                                payload, 
-                                appConfigs.secretKey, 
-                                { expiresIn: appConfigs.tokenKeyValidPeriod, notBefore: currentTimeStamp },
+                                payload,
+                                appConfigs.secretKey,
+                                { expiresIn: appConfigs.tokenKeyValidPeriod, notBefore: 0 },
                                 (err, token) => {
 
                                     if (err) {

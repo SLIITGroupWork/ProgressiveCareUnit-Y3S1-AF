@@ -1,4 +1,6 @@
 const express = require('express');
+const passport = require('passport');
+
 const router = express.Router();
 
 const authorizationsRoutes = require('./controller-routers/authorization.routes');
@@ -10,9 +12,18 @@ const doctor = require('./controller-routers/doctor.routes');
 const doctorPatient = require('./controller-routers/doctor-patient.routes');
 
 
+const doctor = require('./controller-routers/doctor.routes');
+const doctorPatient = require('./controller-routers/doctor-patient.routes');
+
+// Riutes that don't need secured
 router.use('/authorizations', authorizationsRoutes);
-router.use('/patient-registrations', patientRegistrationsRoutes);
-router.use('/users', usersRoutes);
+
+// Secured routes
+router.use('/patient-registrations', passport.authenticate('jwt', { session: false }), patientRegistrationsRoutes);
+router.use('/users', passport.authenticate('jwt', { session: false }), usersRoutes);
+
+router.use('./doctor', doctor);
+router.use('/doctor-patient', doctorPatient);
 
 router.use('./doctor', doctor);
 router.use('/doctor-patient', doctorPatient);

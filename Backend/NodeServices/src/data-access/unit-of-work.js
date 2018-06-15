@@ -12,6 +12,7 @@ const prescriptionDrugsSchema = schemaMapper.model(tableNames.PrescriptionDrugs)
 const billSchema = schemaMapper.model(tableNames.bill);
 
 const patientAllergiesSchema=schemaMapper.model(tableNames.PatientAllergies);
+const patientPhysicalExamsSchema=schemaMapper.model(tableNames.PatientPhysicalExams);
 
 const commentSchema = schemaMapper.model(tableNames.Comments);
 const doctorSchema = schemaMapper.model(tableNames.Doctor);
@@ -33,4 +34,5 @@ module.exports = {
     doctorPatientSchema: doctorPatientSchema,
 
     patientAllergiesSchema:patientAllergiesSchema,
+    patientPhysicalExamsSchema:patientPhysicalExamsSchema
 }

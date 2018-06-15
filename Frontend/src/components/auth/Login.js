@@ -19,11 +19,11 @@ export default class Login extends Component {
                     <div className="row">
                         <div className="col-md-8 m-auto">
 
-                            <h1 className="display-4 text-center">Log In</h1>
+                            <h1 className="display-4 text-center">Sign In</h1>
                             
-                            <p className="lead text-center">Sign in to Progressive Care Unit account</p>
+                            <p className="lead text-center">Login to Progressive Care Unit account</p>
                             
-                            <form action="dashboard.html">
+                            <form>
                                 
                                 <div className="form-group">
                                     <input type="username" className="form-control form-control-lg" placeholder="Username" name="username" />

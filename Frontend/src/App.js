@@ -10,6 +10,8 @@ import FirstPage from './components/layouts/FirstPage';
 
 import Login from './components/auth/Login';
 
+import AddUser from './components/users/AddUser';
+
 class App extends Component {
     render() {
         return (
@@ -22,6 +24,8 @@ class App extends Component {
                     <div className="container">
 
                         <Route exact path="/login" component={ Login }/>
+
+                        <Route exact path="/user/add" component={ AddUser }/>
 
                     </div>
 

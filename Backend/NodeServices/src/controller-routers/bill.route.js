@@ -32,5 +32,15 @@ router.post('/addNewBillDetails', (request, response) => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     });
 });
+router.put('/editBillDetails/:patientId', (request, response) => {
+
+    let billRequest = createRequest(request.body);
+
+        billGenerateController.updateBillDetails(patientId,billRequest).then(billResponse => {
+        response.status(billResponse.status).send(billResponse);
+    }).catch(err => {
+        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
+    });
+});
 
 module.exports = router;

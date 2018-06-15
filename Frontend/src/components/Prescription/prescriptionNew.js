@@ -42,26 +42,26 @@ class prescriptionNew extends Component {
           return { ...drugNames, drugname: evt.target.value };
         });
         
-        this.setState({ shareholders: newShareholders });
+        this.setState({ drugNames: newDrugNames });
     }
     handleAddDrugholder = () => {
         this.setState({ drugNames: this.state.drugNames.concat([{ drugname: '' }]) });
     }
     handleQuantityHolderNameChange = (idx) => (evt) => {
-        const newDrugNames = this.state.quantities.map((quantities, sidx) => {
+        const newQuantity = this.state.quantities.map((quantities, sidx) => {
           if (idx !== sidx) return quantities;
           return { ...quantities,   quantity: evt.target.value };
         });
         
-        this.setState({ shareholders: newShareholders });
+        this.setState({ quantities: newQuantity });
     }
     handleDescriptionHolderNameChange = (idx) => (evt) => {
-        const newDrugNames = this.state.descriptions.map((descriptions, sidx) => {
+        const newDescription = this.state.descriptions.map((descriptions, sidx) => {
           if (idx !== sidx) return descriptions;
           return { ...descriptions, description: evt.target.value };
         });
         
-        this.setState({ shareholders: newShareholders });
+        this.setState({ descriptions: newDescription });
     } 
     
     
@@ -86,9 +86,9 @@ class prescriptionNew extends Component {
         this.setState = {
             patientId: '',
             doctorId: '',
-            drugNames: [],
-            quantities: [],
-            descriptions: [],
+            drugNames: [{drugname:''}],
+            quantities: [{quantity:''}],
+            descriptions: [{description:''}],
            
         }
 
@@ -109,7 +109,7 @@ class prescriptionNew extends Component {
                     <form>
                         <div className="form-group">
                             <label for="patientId">Patient ID:</label>
-                            <input type="patientId" className="form-control" value={this.state.patientId} id="patientId" placeholder="Enter Patient ID" name="name" onChange={this.handleNameChange} />
+                            <input type="patientId" className="form-control" value={this.state.patientId} id="patientId" placeholder="Enter Patient ID" name="patientId" onChange={this.handleNameChange} />
                         </div>
                         <div class="form-group">
                             <label for="doctorId">Doctor ID:</label>

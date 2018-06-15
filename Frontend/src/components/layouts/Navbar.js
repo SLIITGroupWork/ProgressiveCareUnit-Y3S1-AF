@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 
 class Navbar extends Component {
 
     render() {
 
         return (
-            <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+            <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
                 <div className="container">
-                    <a className="navbar-brand" href="/">
+                    <Link className="navbar-brand" to="/">
                         Progressive Care Unit
-                    </a>
+                    </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
                         <span className="navbar-toggler-icon" />
                     </button>
@@ -17,22 +19,31 @@ class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="mobile-nav">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <a className="nav-link">
-                                    Users
-                                </a>
+                                <Link className="nav-link" to="/quick-patient-resitration">Resgiter Patient</Link>
+                            </li>
+                            { /* Dropdown */ }
+                            <li className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" to="#" data-toggle="dropdown">
+                                    Manage Users
+                                </Link>
+                                <div className="dropdown-menu">
+                                    <Link className="dropdown-item" to="/user/map-patient-rigistration">Assign Registration</Link>
+                                    <Link className="dropdown-item" to="/user/search">Search</Link>
+                                    <Link className="dropdown-item" to="/user/add">Add New</Link>
+                                </div>
                             </li>
                         </ul>
 
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <a className="nav-link">
+                                <Link className="nav-link" to="/feedback">
                                     Feedback
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">
+                                <Link className="nav-link" to="/login">
                                     Login
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

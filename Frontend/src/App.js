@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import './App.css';
 
 import Navbar from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
 
+import FirstPage from './components/layouts/FirstPage';
+
+import Login from './components/auth/Login';
+
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <Navbar />
-                <h1>My React App</h1>
-                <Footer />
-            </div>
+            <Router>
+                <div className="App">
+                    <Navbar />
+                    
+                    <Route exact path="/" component={ FirstPage } />
+
+                    <div className="container">
+
+                        <Route exact path="/login" component={ Login }/>
+
+                    </div>
+
+                    <Footer />
+                </div>
+            </Router>
         );
     }
 }

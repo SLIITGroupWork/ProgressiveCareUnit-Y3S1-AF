@@ -22,6 +22,46 @@ class DoctorController extends BaseController {
             });
         });
     }
+
+    addDoctor(doctor) {
+        return new Promise((resolve, reject) => {
+            doctorService.addDoctors(doctor).then((data) => {
+                resolve(this.createResponse(this.statusCodes.Created, data));
+            }).catch((err) => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
+    getDoctorsByStatus(status) {
+        return new Promise((resolve, reject) => {
+            doctorService.getDoctorsByStatus(status).then((data) => {
+                resolve(this.createResponse(this.statusCodes.OK, data));
+            }).catch((err) => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
+    getNotTreatedPatient() {
+        return new Promise((resolve, reject) => {
+            doctorService.getNotTreatedPatient().then((data) => {
+                resolve(this.createResponse(this.statusCodes.OK, data));
+            }).catch((err) => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
+
+    getNextPatient() {
+        return new Promise((resolve, reject) => {
+            doctorService.getNextPatient().then((data) => {
+                resolve(this.createResponse(this.statusCodes.OK, data));
+            }).catch((err) => {
+                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
+            });
+        });
+    }
 }
 
 module.exports = new DoctorController();

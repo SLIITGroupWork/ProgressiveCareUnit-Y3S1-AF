@@ -19,12 +19,4 @@ router.get('/inTreament', (request, response) => {
     });
 });
 
-router.put('/status/:id', (request, response) => {
-    doctorPatientController.updateDoctorPatientStatus(request.param.id, request.body).then((data) => {
-        response.status(data.status).send(data);
-    }).catch((err) => {
-        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
-    });
-});
-
 module.exports = router;

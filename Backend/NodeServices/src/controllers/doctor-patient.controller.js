@@ -13,16 +13,6 @@ class DoctorPatientController extends BaseController {
         });
     }
 
-    updateDoctorPatientStatus(id, status) {
-        return new Promise((resolve, reject) => {
-            doctorPatientService.updateDoctorPatientStatus(id,status).then((data) => {
-                resolve(this.createResponse(this.statusCodes.OK, data));
-            }).catch((err) => {
-                reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
-            });
-        });
-    }
-
     getDoctorPatientTreating() {
         return new Promise((resolve, reject) => {
             doctorPatientService.getDoctorPatientTreating().then((data) => {

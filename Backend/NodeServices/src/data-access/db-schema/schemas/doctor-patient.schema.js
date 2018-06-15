@@ -13,8 +13,8 @@ const doctorPatientSchema = new Schema({
         ref: tableNames.PatientRegistrations,
         require: true
     },
-    treatmentStatus: {
-        type: String,
+    isTreated: {
+        type: Boolean,
         require: true
     }
 });

@@ -25,7 +25,7 @@ router.post('/', (request, response) => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     });
 });
-router.update('/:patientID', (request, response) => {
+router.put('/:patientID', (request, response) => {
 
     let prescriptionRequest = createRequest(request.body);
 

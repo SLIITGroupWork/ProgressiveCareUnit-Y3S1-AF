@@ -114,7 +114,8 @@ class prescriptionService extends BaseService {
     }
     getQuantity(prescriptionId,drugId){
         return new Promise((resolve,reject)=>{
-            this.unitOfWork.prescriptionDrugsSchema.find({presID:prescriptionId,drugID:drugId},{_id:false,quantity:true}).then(quantity ={
+            this.unitOfWork.prescriptionDrugsSchema.find({presID:prescriptionId,drugID:drugId},{_id:false,quantity:true})
+            .then(quantity =>{
                 resolve(quantity);
             }).catch(err =>{
                 reject(err);

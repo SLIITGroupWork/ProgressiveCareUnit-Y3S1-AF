@@ -1,6 +1,6 @@
 const drugService = require('./drug.service')
 const BaseService = require('../base/services/base.service');
-const prescriptionService = reqiure('./prescription.service');
+const prescriptionService = require('./prescription.service');
 
 
 class billGeneratorService extends BaseService {
@@ -32,7 +32,7 @@ class billGeneratorService extends BaseService {
             
         });
     }
-    gen =function(Drugbill,expenses){
+    gen (Drugbill,expenses){
         return Drugbill+expenses;
     }
 

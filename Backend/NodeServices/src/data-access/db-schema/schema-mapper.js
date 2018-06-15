@@ -11,6 +11,7 @@ const applicationUserSchema = require('./schemas/application-user.schema');
 const presciptionSchema = require('./schemas/presciption.schema');
 const drugsSchema = require('./schemas/drug.schema');
 const prescriptionDrugsSchema = require('./schemas/prescription-drug.schema');
+const billSchema = require('./schemas/bill.schema');
 
 const patientAllergiesSchema = require('./schemas/patient-allergies.schema');
 const patientPhysicalExamsSchema=require('./schemas/patient-physical-exams.schema');
@@ -29,6 +30,7 @@ mongoose.model(tableNames.ApplicationUsers, applicationUserSchema);
 mongoose.model(tableNames.Presciptions, presciptionSchema);
 mongoose.model(tableNames.Drugs, drugsSchema);
 mongoose.model(tableNames.PrescriptionDrugs, prescriptionDrugsSchema);
+mongoose.model(tableNames.bill, billSchema);
 
 mongoose.model(tableNames.PatientAllergies, patientAllergiesSchema);
 mongoose.model(tableNames.patientPhysicalExams, patientPhysicalExamsSchema);

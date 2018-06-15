@@ -18,10 +18,9 @@ class drugController extends BaseController {
     insertDrug(drugData) {
 
         return new Promise((resolve, reject) => {
+           // let request = this.createRequest(drugData);
 
-            let request = this.createRequest(drugData);
-
-            drugService.addNewDrug(request.data).then(data => {
+            drugService.addNewDrug(drugData.data).then(data => {
                 resolve(this.createResponse(this.statusCodes.Created, true, data));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, false, [], err));
@@ -32,15 +31,16 @@ class drugController extends BaseController {
     getDrugDetailsByName(drugname) {
 
         return new Promise((resolve, reject) => {
-            let request = this.createRequest(drugname);
+            //let request = this.createRequest(drugname);
 
-            drugService.getDrugByName(request.data).then(data => {
+            drugService.getDrugByName(drugname.data).then(data => {
                 resolve(this.createResponse(this.statusCodes.OK, true, data));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, false, [], err));
             });
         });
     }
+    
     
 }
 

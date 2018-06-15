@@ -8,6 +8,7 @@ module.exports = {
     Presciptions: 'Presciptions',
     Drugs: 'Drugs',
     PrescriptionDrugs: 'PrescriptionDrugs',
+    bill:'bill',
 
     Comments: 'Comments',
     Doctor: 'Doctor',

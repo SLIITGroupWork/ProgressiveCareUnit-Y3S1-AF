@@ -16,6 +16,10 @@ const prescriptionDrugsSchema = new Schema({
     quantity: {
         type: Number,
         require: true
+    },
+    description:{
+        type:String,
+        require:true
     }
 });
 

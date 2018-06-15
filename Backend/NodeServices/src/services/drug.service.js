@@ -19,6 +19,7 @@ class DrugService extends BaseService {
     addNewDrug(drugData) {
 
         return new Promise((resolve, reject) => {
+            console.log("checkingservice");
 
             let drug = new this.unitOfWork.drugsSchema({
                 drugName: drugData.drugname,
@@ -44,6 +45,16 @@ class DrugService extends BaseService {
             });
         });
     }
+    getDrugIdByName(drugname){
+        return new Promise((resolve,reject) =>{
+           
+            this.unitOfWork.drugsSchema. find({drugName:drugname},{_id:true}).then(data => {
+                resolve(data);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    }
 
     updateDrug(name,data){
         return new Promise((resolve,reject)=>{
@@ -54,6 +65,16 @@ class DrugService extends BaseService {
                 reject(err);
             });
         })
+    }
+    getDrugPrice(drugId){
+        return new Promise((resolve,reject)=>{
+
+            this.unitOfWork.drugsSchema.find({_id: drugId},{_id:false}).then(data =>{
+                resolve(data);
+            }).catch(err =>{
+                reject(err);
+            })
+        });
     }
     
 }

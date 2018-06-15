@@ -2,6 +2,7 @@ const BaseController = require('../base/controllers/base.controller');
 const patientPhysicalExamsService = require('../services/patient-allergies.service');
 
 class PatientPhysicalExamController extends BaseController{
+    
     getAllPhysicalExamsDetail(){
         return new Promise((resolve,reject)=>{
             patientPhysicalExamsService.getAllPhysicalExamsDetail().then(data=>{

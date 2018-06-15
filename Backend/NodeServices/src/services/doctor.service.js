@@ -83,9 +83,10 @@ class DoctorService extends BaseService {
         });
     }
 
+    //Not Completed
     getNextPatient() {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.patientRegistrationSchema.aggregate({patientStatus:}).exec().then((data) => {
+            this.unitOfWork.patientRegistrationSchema.aggregate({}).exec().then((data) => {
                 resolve(data);
             }).catch((err) => {
                 reject(err);

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Progressive Care Unit Application React Client",
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

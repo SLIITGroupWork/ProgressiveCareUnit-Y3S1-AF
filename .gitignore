@@ -27,6 +27,10 @@ Backend/SpringServices/nbdist/*
 Backend/SpringServices/.nb-gradle/*
 Backend/SpringServices/target/*
 
-### Node Modules ###
+### NodeServices ###
 Backend/NodeServices/node_modules/*
 Backend/NodeServices/.idea/*
+
+### React ###
+Frontend/node_modules/*
+Frontend/.idea/*

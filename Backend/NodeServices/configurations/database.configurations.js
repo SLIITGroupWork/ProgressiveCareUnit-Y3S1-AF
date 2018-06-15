@@ -1,9 +1,9 @@
 const bcrypt = require('bcryptjs');
 
-const appConfigs = require('../../../appConfig');
-const applicationUserConsts = require('../../consts/application-user.consts');
-const userConsts = require('../../consts/user.consts');
-const tableNames = require('../db-schema/table-names.const');
+const appConfigs = require('../appConfig');
+const applicationUserConsts = require('../src/consts/application-user.consts');
+const userConsts = require('../src/consts/user.consts');
+const tableNames = require('../src/consts/table-names.consts');
 
 //Sleep method for waitings
 const sleep = (milliseconds) => {

@@ -4,16 +4,16 @@ const billGenerateController = require('../controllers/billGenerate.controller')
 const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
-router.get('/:id', (request, response) => {
+router.get('/searchBillDetailsByPatientId/:patientId', (request, response) => {
 
-    billGenerateController.getBillDetails(request.params.id).then(billResponse => {
+    billGenerateController.getBillDetails(request.params.patientId).then(billResponse => {
         response.status(billResponse.status).send(billResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     });
 });
 
-router.get('/', (request, response) => {
+router.get('/searchAllBillDetails', (request, response) => {
 
         billGenerateController.searchAllBillDetails().then(billResponse => {
         response.status(billResponse.status).send(billResponse);
@@ -22,7 +22,7 @@ router.get('/', (request, response) => {
     });
 });
 
-router.post('/', (request, response) => {
+router.post('/addNewBillDetails', (request, response) => {
 
     let billRequest = createRequest(request.body);
 

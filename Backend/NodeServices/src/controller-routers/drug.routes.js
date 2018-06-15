@@ -4,7 +4,7 @@ const drugController = require('../controllers/drug.controller');
 const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
-router.get('/:name', (request, response) => {
+router.get('/searchDrugByName/:name', (request, response) => {
 
     drugController.getDrugDetailsByName(request.params.name).then(drugResponse => {
         response.status(drugResponse.status).send(drugResponse);
@@ -13,7 +13,7 @@ router.get('/:name', (request, response) => {
     });
 });
 
-router.get('/', (request, response) => {
+router.get('/searchAllDrugs', (request, response) => {
 
     drugController.getAllDrugDetails().then(drugResponse => {
         response.status(drugResponse.status).send(drugResponse);
@@ -22,8 +22,8 @@ router.get('/', (request, response) => {
     });
 });
 
-router.post('/', (request, response) => {
-    console.log("checkingRoute");
+router.post('/addNewDrug', (request, response) => {
+    //console.log("checkingRoute");
 
     let drugRequest = createRequest(request.body);
 

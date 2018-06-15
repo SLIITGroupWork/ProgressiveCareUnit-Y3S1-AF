@@ -13,6 +13,7 @@ const drugsSchema = require('./schemas/drug.schema');
 const prescriptionDrugsSchema = require('./schemas/prescription-drug.schema');
 
 const patientAllergiesSchema = require('./schemas/patient-allergies.schema');
+const patientPhysicalExamsSchema=require('./schemas/patient-physical-exams.schema');
 
 const commentSchema = require('./schemas/user.scema');
 const doctorSchema = require('./schemas/doctor.schema');
@@ -30,6 +31,7 @@ mongoose.model(tableNames.Drugs, drugsSchema);
 mongoose.model(tableNames.PrescriptionDrugs, prescriptionDrugsSchema);
 
 mongoose.model(tableNames.PatientAllergies, patientAllergiesSchema);
+mongoose.model(tableNames.patientPhysicalExams, patientPhysicalExamsSchema);
 
 mongoose.model(tableNames.Comments, commentSchema);
 mongoose.model(tableNames.Doctor, doctorSchema);

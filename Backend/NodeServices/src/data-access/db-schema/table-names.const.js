@@ -14,4 +14,5 @@ module.exports = {
     DoctorPatient: 'DoctorPatient',
     
     PatientAllergies: 'PatientAllergies',
+    PatientPhysicalExams:'PatientPhysicalExams'
 }

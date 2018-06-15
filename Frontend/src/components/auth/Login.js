@@ -9,6 +9,21 @@ export default class Login extends Component {
             username: '',
             password: ''
         }
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    onChange(e) {
+
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    onSubmit(e) {
+        
+        e.preventDefault();
     }
 
     render() {
@@ -23,14 +38,20 @@ export default class Login extends Component {
                             
                             <p className="lead text-center">Login to Progressive Care Unit account</p>
                             
-                            <form>
+                            <form onSubmit={ this.onSubmit }>
                                 
                                 <div className="form-group">
-                                    <input type="username" className="form-control form-control-lg" placeholder="Username" name="username" />
+                                    <input type="username" className="form-control form-control-lg" 
+                                        placeholder="Username" name="username" 
+                                        value={ this.state.username } 
+                                        onChange={ this.onChange }/>
                                 </div>
                                 
                                 <div className="form-group">
-                                    <input type="password" className="form-control form-control-lg" placeholder="Password" name="password" />
+                                    <input type="password" className="form-control form-control-lg" 
+                                        placeholder="Password" name="password" 
+                                        value={ this.state.password }
+                                        onChange={ this.onChange } />
                                 </div>
                                 
                                 <input type="submit" className="btn btn-info btn-block mt-4" />

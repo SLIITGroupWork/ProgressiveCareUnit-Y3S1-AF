@@ -1,5 +1,4 @@
 const BaseService = require('../base/services/base.service');
-const unitOfWork = require('../data-access/unit-of-work');
 
 class UserService extends BaseService {
 
@@ -7,7 +6,7 @@ class UserService extends BaseService {
 
         return new Promise((resolve, reject) => {
 
-            unitOfWork.userSchema.findOne({ nic: nic }, { _id: true }).exec().then(data => {
+            this.unitOfWork.userSchema.findOne({ nic: nic }, { _id: true }).exec().then(data => {
                 resolve(!(data));
             }).catch(err => {
                 reject(err);
@@ -18,7 +17,7 @@ class UserService extends BaseService {
     getAllUsers() {
 
         return new Promise((resolve, reject) => {
-            unitOfWork.userSchema.find().exec().then(users => {
+            this.unitOfWork.userSchema.find().exec().then(users => {
                 resolve(users);
             }).catch(err => {
                 reject(err);
@@ -30,7 +29,7 @@ class UserService extends BaseService {
 
         return new Promise((resolve, reject) => {
 
-            unitOfWork.userSchema.findOne({ _id: id }).exec().then(user => {
+            this.unitOfWork.userSchema.findOne({ _id: id }).exec().then(user => {
                 resolve(user);
             }).catch(err => {
                 reject(err);
@@ -42,7 +41,7 @@ class UserService extends BaseService {
 
         return new Promise((resolve, reject) => {
             
-            unitOfWork.userSchema.findOne({ nic: nic.toUpperCase() }).exec().then(user => {
+            this.unitOfWork.userSchema.findOne({ nic: nic.toUpperCase() }).exec().then(user => {
                 resolve(user);
             }).catch(err => {
                 reject(err);
@@ -57,7 +56,7 @@ class UserService extends BaseService {
 
                 if (isValid) {
 
-                    let userSchema = new unitOfWork.userSchema({
+                    let userSchema = new this.unitOfWork.userSchema({
                         nic: user.nic,
                         firstName: user.firstName,
                         lastName: user.lastName,
@@ -84,7 +83,7 @@ class UserService extends BaseService {
 
         return new Promise((resolve, reject) => {
 
-            unitOfWork.userSchema.findOneAndUpdate({ nic: user.nic },
+            this.unitOfWork.userSchema.findOneAndUpdate({ nic: user.nic },
                 {
                     firstName: user.firstName,
                     lastName: user.lastName,

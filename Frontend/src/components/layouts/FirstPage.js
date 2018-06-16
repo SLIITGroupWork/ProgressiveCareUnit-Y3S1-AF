@@ -19,7 +19,7 @@ export default class FirstPage extends Component {
 
                                 <hr className="mb-5 mt-5"/>
 
-                                <Link to="/feedback" className="btn btn-lg btn-info mr-5 width-150">
+                                <Link to="/feedbacks" className="btn btn-lg btn-info mr-5 width-150">
                                     <span className="fas fa-comments mr-1"></span>Feedback<br />
                                     <span className="very-small-font">For anyone</span>
                                 </Link>

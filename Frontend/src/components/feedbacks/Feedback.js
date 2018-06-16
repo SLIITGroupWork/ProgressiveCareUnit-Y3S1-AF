@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Feedback extends Component {
 
     constructor() {
         super();
-
+        
         this.state = {
             description: ''
         }
@@ -21,10 +22,19 @@ export default class Feedback extends Component {
     }
 
     onSubmit(e) {
-        
         e.preventDefault();
+        
+        axios.post('http://localhost:8080/feedbacks', {
+            description: this.state.description
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
-
+    
     render() {
 
         return (

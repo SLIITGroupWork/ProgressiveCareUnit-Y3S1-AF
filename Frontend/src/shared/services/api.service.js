@@ -2,6 +2,11 @@ import axios from 'axios';
 
 export default class ApiService {
 
+    constructor() {
+
+        this.baseUrl = "http://localhost:5556/api/";
+    }
+
     _setTokenData(tokenData) {
         localStorage.setItem('tokenData', JSON.stringify(tokenData));
     }
@@ -25,7 +30,7 @@ export default class ApiService {
     }
 
     _createResponse(status, response, isError = false) {
-        
+
         if (status === 401) {
 
             localStorage.removeItem('tokenData');
@@ -58,7 +63,7 @@ export default class ApiService {
 
         return new Response((resolve, reject) => {
 
-            axios.get(url, { headers: this.headers }).then(response => {
+            axios.get(this.baseUrl + url, { headers: this.headers }).then(response => {
                 resolve(this._createResponse(response.request.status, response.data));
             }).catch(err => {
                 resolve(this._createResponse(err.request.status, err.request.response, true));
@@ -70,7 +75,7 @@ export default class ApiService {
 
         return new Promise((resolve, reject) => {
 
-            axios.post(url, request, { headers: this.headers }).then(response => {
+            axios.post(this.baseUrl + url, request, { headers: this.headers }).then(response => {
 
                 let dataResponse = this._createResponse(response.request.status, response.data);
 
@@ -89,7 +94,7 @@ export default class ApiService {
 
         return new Promise((resolve, reject) => {
 
-            axios.put(url, request, { headers: this.headers }).then(response => {
+            axios.put(this.baseUrl + url, request, { headers: this.headers }).then(response => {
                 resolve(this._createResponse(response.request.status, response.data));
             }).catch(err => {
                 resolve(this._createResponse(err.request.status, err.request.response, true));

@@ -26,6 +26,17 @@ export default class PCUService {
             this.apiService.post('patient-registrations/addNewPatientRegistration', patientRegistrationRequest, true).then(patientRegistrationResponse => {
                 resolve(patientRegistrationResponse);
             });
+        });
+    }
+
+    // add new user 
+    addNewUser(userRequest) {
+
+        return new Promise((resolve, reject) => {
+
+            this.apiService.post('users/addNewUser', userRequest).then(usersResponse => {
+                resolve(usersResponse);
+            });
         })
     }
 }

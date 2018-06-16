@@ -17,6 +17,5 @@
     "eject": "react-scripts eject"
   },
   "author": "Fantastic Team",
-  "license": "MIT",
-  "proxy": "http://localhost:5556/api/"
+  "license": "MIT"
 }

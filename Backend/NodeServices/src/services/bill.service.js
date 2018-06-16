@@ -2,7 +2,7 @@ const BaseService = require('../base/services/base.service');
 
 
 
-class DrugService extends BaseService {
+class billService extends BaseService {
 
     getAllBillDetails() {
 
@@ -61,4 +61,4 @@ class DrugService extends BaseService {
         
 }
 
-module.exports = new DrugService();
+module.exports = new billService();

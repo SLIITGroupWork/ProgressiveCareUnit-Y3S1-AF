@@ -4,7 +4,7 @@ const prescriptionController = require('../controllers/prescription.contoller');
 const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
-router.get('/:name', (request, response) => {
+router.get('/searchPrescription/:name', (request, response) => {
     let prescriptionRequest = createRequest(request.body);
 
     prescriptionController.getPescription(request.params.name,prescriptionRequest.date).then(prescriptionResponse => {
@@ -15,7 +15,7 @@ router.get('/:name', (request, response) => {
 });
 
 
-router.post('/', (request, response) => {
+router.post('/addPrescription', (request, response) => {
 
     let prescriptionRequest = createRequest(request.body);
 
@@ -25,7 +25,7 @@ router.post('/', (request, response) => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     });
 });
-router.update('/:patientID', (request, response) => {
+router.put('/updatePrescription/:patientID', (request, response) => {
 
     let prescriptionRequest = createRequest(request.body);
 

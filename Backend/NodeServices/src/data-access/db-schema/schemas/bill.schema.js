@@ -3,9 +3,14 @@ const Schema = mongoose.Schema;
 const tableNames = require('../table-names.const');
 
 const billSchema = new Schema({
+    // patientId: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: tableNames.PatientRegistrations,
+    //     require: true
+    // },
     patientId: {
-        type: Schema.Types.ObjectId,
-        ref: tableNames.PatientRegistrations,
+        type: String,
+        //ref: tableNames.PatientRegistrations,
         require: true
     },
     drugPrice: {

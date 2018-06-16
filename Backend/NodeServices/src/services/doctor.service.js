@@ -52,9 +52,9 @@ class DoctorService extends BaseService {
         });
     }
 
-    updatePatientStatus(id, status) {
+    updatePatientIsTreated(id, treated) {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.patientRegistrationSchema.update({ _id: id },{ $set:{ patientStatus: status }
+            this.unitOfWork.patientRegistrationSchema.update({ _id: id },{ $set:{ isTreated: treated }
             }).then((data) => {
                 resolve(data);
             }).catch((err) => {
@@ -73,9 +73,9 @@ class DoctorService extends BaseService {
         });
     }
 
-    getPatientByStatus(status) {
+    getNotTreatedPatient() {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.patientRegistrationSchema.find({ patientStatus: status }).then((data) => {
+            this.unitOfWork.patientRegistrationSchema.find({ isTreated: false }).exec().then((data) => {
                 resolve(data);
             }).catch((err) => {
                 reject(err);
@@ -83,10 +83,10 @@ class DoctorService extends BaseService {
         });
     }
 
-    //Not Completed
     getNextPatient() {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.patientRegistrationSchema.aggregate({}).exec().then((data) => {
+            this.unitOfWork.patientRegistrationSchema.findOne({ isTreated: false },{$orderby: { priority : -1 }})
+            .exec().then((data) => {
                 resolve(data);
             }).catch((err) => {
                 reject(err);

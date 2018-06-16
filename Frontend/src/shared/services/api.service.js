@@ -60,9 +60,9 @@ export default class ApiService {
     }
 
     get(url) {
-
-        return new Response((resolve, reject) => {
-
+        
+        return new Promise((resolve, reject) => {
+            
             axios.get(this.baseUrl + url, { headers: this.headers }).then(response => {
                 resolve(this._createResponse(response.request.status, response.data));
             }).catch(err => {

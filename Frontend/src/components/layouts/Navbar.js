@@ -50,22 +50,28 @@ class Navbar extends Component {
                     </button>
 
                     <div className="collapse navbar-collapse" id="mobile-nav">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/quick-patient-resitration">Resgiter Patient</Link>
-                            </li>
-                            { /* Dropdown */}
-                            <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle" to="#" data-toggle="dropdown">
-                                    Manage Users
-                                </Link>
-                                <div className="dropdown-menu">
-                                    <Link className="dropdown-item" to="/user/map-patient-rigistration">Assign Registration</Link>
-                                    <Link className="dropdown-item" to="/user/search">Search User</Link>
-                                    <Link className="dropdown-item" to="/user/add">Add New Users</Link>
-                                </div>
-                            </li>
-                        </ul>
+
+                        {
+                            (this.state.isLoggedIn) ? (
+                                <ul className="navbar-nav mr-auto">
+
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/quick-patient-resitration">Resgiter Patient</Link>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <Link className="nav-link dropdown-toggle" to="#" data-toggle="dropdown">
+                                            Manage Users
+                                        </Link>
+                                        <div className="dropdown-menu">
+                                            <Link className="dropdown-item" to="/user/map-patient-rigistration">Assign Registration</Link>
+                                            <Link className="dropdown-item" to="/user/search">Search User</Link>
+                                            <Link className="dropdown-item" to="/user/add">Add New Users</Link>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            ) : null
+                        }
 
                         <ul className="navbar-nav ml-auto">
 

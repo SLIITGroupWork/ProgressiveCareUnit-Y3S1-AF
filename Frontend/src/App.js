@@ -18,6 +18,8 @@ import NextPatientDetails from './components/doctor/NextPatientDetails';
 
 
 class App extends Component {
+
+    
     render() {
         return (
             <Router>

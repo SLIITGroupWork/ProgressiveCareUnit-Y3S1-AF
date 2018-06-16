@@ -24,7 +24,7 @@ export default class ApiService {
         return headers;
     }
 
-    _createResponse(status, response) {
+    _createResponse(status, response, isError = false) {
         
         if (status === 401) {
 
@@ -39,6 +39,10 @@ export default class ApiService {
                 message: 'Unauthorized',
                 respondDateTime: new Date(response.respondDateTime)
             }
+        }
+
+        if (isError) {
+            response = JSON.parse(response);
         }
 
         return {
@@ -57,7 +61,7 @@ export default class ApiService {
             axios.get(url, { headers: this.headers }).then(response => {
                 resolve(this._createResponse(response.request.status, response.data));
             }).catch(err => {
-                resolve(this._createResponse(err.request.status, err.request.response));
+                resolve(this._createResponse(err.request.status, err.request.response, true));
             });
         });
     }
@@ -76,7 +80,7 @@ export default class ApiService {
 
                 resolve(dataResponse);
             }).catch(err => {
-                resolve(this._createResponse(err.request.status, err.request.response));
+                resolve(this._createResponse(err.request.status, err.request.response, true));
             });
         });
     }
@@ -88,10 +92,8 @@ export default class ApiService {
             axios.put(url, request, { headers: this.headers }).then(response => {
                 resolve(this._createResponse(response.request.status, response.data));
             }).catch(err => {
-                resolve(this._createResponse(err.request.status, err.request.response));
+                resolve(this._createResponse(err.request.status, err.request.response, true));
             });
         });
     }
 }
-
-module.exports = new ApiService();

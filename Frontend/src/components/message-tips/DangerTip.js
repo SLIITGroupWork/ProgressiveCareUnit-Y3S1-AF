@@ -17,6 +17,6 @@ export default class DangerTip extends Component {
             <div className="alert alert-danger mt-2">
                 <strong>{this.state.title}</strong> {this.state.description}.
             </div>
-        )
+        );
     }
 }

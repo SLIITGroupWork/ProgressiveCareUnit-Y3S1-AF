@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router'
 
-import ApiService from '../../shared/services/api.service';
+import PCUService from '../../shared/services/pcu.service';
 import AuthSerive from '../../shared/services/auth.service';
 import DangerTip from '../message-tips/DangerTip';
 
@@ -10,8 +10,8 @@ export default class Login extends Component {
     constructor() {
         super();
 
-        this.apiService = new ApiService();
         this.authSerive = new AuthSerive();
+        this.pcuService = new PCUService();
 
         this.state = {
             username: '',
@@ -51,11 +51,10 @@ export default class Login extends Component {
             }
         }
 
-        this.apiService.post('authorizations/userLogin', loginRequest, true).then(loginResponse => {
+        this.pcuService.userLogin(loginRequest).then(loginResponse => {
             
             if (loginResponse.isSuccess) {
-                window.location.href = '/';    
-                // this.setState({ isLoggedIn: true, invalidCredentials: false });
+                window.location.href = '/';
             }
             else {
                 this.setState({ password: '', invalidCredentials: true });

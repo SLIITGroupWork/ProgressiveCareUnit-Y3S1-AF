@@ -22,6 +22,13 @@ export default class AuthService {
         }
     }
 
+    redirectIfNotLoggedIn() {
+
+        if (!this.isLoggedIn) {
+            window.location.href = '/';
+        }
+    }
+
     logout() {
         localStorage.removeItem('tokenData');
         window.location.href = '/';

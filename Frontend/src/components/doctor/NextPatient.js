@@ -21,7 +21,7 @@ export default class NextPatient extends Component {
     }
 
     getNextPatient() {
-
+        window.open('http://localhost:3000/doctors/nextPatient','_self');
     }
 
     render() {

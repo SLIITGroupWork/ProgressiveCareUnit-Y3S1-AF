@@ -55,11 +55,11 @@ class App extends Component {
 
                         <Route exact path="/bill/new" component={ AddBill } />
 
-<Route exact path="/bill/view" component={ ViewBill } />
+                        <Route exact path="/bill/view" component={ ViewBill } />
 
-<Route exact path="/bill/search" component={ SearchBill } />
-<Route exact path="/prescription/new" component={ NewPrescription } />
->>>>>>> 7bf910ceb8080ef2de05bfb19cb2df00cce348a1
+                        <Route exact path="/bill/search" component={ SearchBill } />
+                        <Route exact path="/prescription/new" component={ NewPrescription } />
+
 
                     </div>
                     

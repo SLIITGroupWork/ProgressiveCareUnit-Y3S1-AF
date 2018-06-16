@@ -6,7 +6,7 @@ const httpStatus = require('../consts/http-status.consts');
 
 router.get('/generateBill/:patientId', (request, response) => {
 
-    let billRequest = createRequest(request.body);
+    //let billRequest = createRequest(request.body);
 
     //     billGenerateController.generateBill(request.params.patientId,billRequest).then(billResponse => {
     //     response.status(billResponse.status).send(billResponse);
@@ -22,7 +22,7 @@ router.get('/generateBill/:patientId', (request, response) => {
     response.setHeader('Content-disposition', 'attachment; filename="' + filename + '"')
     response.setHeader('Content-type', 'application/pdf')
     //const content = req.body.content
-    const content =billGenerateController.generateBill(request.params.patientId,billRequest);
+    const content =billGenerateController.generateBill(request.params.patientId,request.body);
     doc.y = 300
     doc.text(content, 50, 50);
     doc.pipe(res);

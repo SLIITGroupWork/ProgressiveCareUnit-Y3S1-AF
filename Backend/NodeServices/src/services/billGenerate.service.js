@@ -54,7 +54,7 @@ class billGeneratorService extends BaseService {
         return new Promise((resolve,reject)=>{
             this.unitOfWork.billSchema.find({patientId:patientId}).exec().then(billDetails =>{
                 let totalAmount = this.calculateTotal(patientId,startdate,endDate,billDetails)
-                this.unitOfWork.billSchema.update({patientId:patientId},{$set:{drugPrice:totalprice}})
+                this.unitOfWork.billSchema.update({patientId:patientId},{$set:{drugPrice:totalprice}});
                 resolve(billDetails,totalAmount);
             }).catch(err =>{
                 reject(err);

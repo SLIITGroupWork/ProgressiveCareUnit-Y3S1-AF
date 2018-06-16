@@ -17,22 +17,24 @@ class PatientRegistrationController extends BaseController {
     }
 
     insertBillDetails(billRequest) {
-
+        
         return new Promise((resolve, reject) => {
 
-            billService.addBillDetails(billRequest.data).then(bill => {
+            console.log(billRequest)
+
+            billService.addBillDetails(billRequest).then(bill => {
                 resolve(this.createResponse(this.statusCodes.Created, bill));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });
     }
-    updateBillDetails(patientId,billRequest) {
+    editBillDetails(patientId,billRequest) {
 
         return new Promise((resolve, reject) => {
 
-            billService.updateBillDetails(patientId,billRequest.data).then(bill => {
-                resolve(this.createResponse(this.statusCodes.Created, bill));
+            billService.updateBillDetails(patientId,billRequest).then(bill => {
+                resolve(this.createResponse(this.statusCodes.OK, bill));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
@@ -51,8 +53,8 @@ class PatientRegistrationController extends BaseController {
     generateBill(patientId,startdate,endDate){
         return new Promise((resolve, reject) => {
 
-            billService.generateTotalBill(patientId,startdate,endDate).then(bill => {
-                resolve(this.createResponse(this.statusCodes.Created, bill));
+            billGenerateService.generateTotalBill(patientId,startdate,endDate).then(bill => {
+                resolve(this.createResponse(this.statusCodes.OK, bill));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });

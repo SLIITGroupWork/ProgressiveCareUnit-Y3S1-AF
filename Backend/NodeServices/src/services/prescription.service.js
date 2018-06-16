@@ -32,21 +32,25 @@ class prescriptionService extends BaseService {
     }
 
     addNewPrescription(prescriptionData) {
+        console.log("service1")
 
         return new Promise((resolve, reject) => {
-            
+            console.log("service289");
             //Get the patient Id using the service of the PatientRegistration by name
             //Get the doctor Id using the doctorService by name
 
             let prescription = new this.unitOfWork.presciptionSchema({
                 patientId:prescriptionData.patientId,
                 doctorId:prescriptionData.doctorId,
-                date:new Date(year, month, day)             
+                date:new Date()             
                 
             });
+            console.log(prescription);
             prescription.save().then(data => {
+                console.log("service22")
                 resolve(data);
             }).catch(err => {
+                console.log(err);
                 reject(err);
             });
             //get the Prescription Id

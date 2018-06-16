@@ -43,10 +43,37 @@ class billNew extends Component {
         })
         console.log(this.state.OtherCharges)
     }
+    // onSubmit(event){
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     if (this.drugName && this.drugDosage && this.drugFrequency ) {
+    //       let drug = {
+    //         patientId: this.state.patientId,
+    //         //drugPrice: this.state.drugPrice,
+    //         hospitalCharges: this.state.hospitalCharges,
+    //         laboraryCharges: this.state.laboraryCharges,
+    //         OtherCharges: this.state.OtherCharges,           
+                
+            
+    //       }
+            
+    //        this.drugs = this.state.prescription.drugs;
+    //       this.drugs.push(drug);
+
+    //       this.setState({prescription: {drugs : this.drugs}});
+            
+    //         //this.state.prescription.drugs.push(drug);
+
+    //         this.props.updatePrescription(this.state.prescription);
+
+    //         alert("Successfully inserted.....!")
+    //     }
+    // }
     
     
     handleClick = event => {
         event.preventDefault();
+        //event.stopPropagation();
         axios.post('http://localhost:5556/api/bill/addNewBillDetails', {
             patientId: this.state.patientId,
             //drugPrice: this.state.drugPrice,
@@ -94,18 +121,18 @@ class billNew extends Component {
                         </div>                        
                         <div class="form-group">
                             <label for="hospitalCharges">Hospital Charges:</label>
-                            <input type="hospitalCharges" class="form-control" value={this.state.hospitalCharges} id="hospitalCharges" placeholder="Enter Hosplital Chargers" name="hospitalCharges" onChange={this.handleHospitalChargesChange} />
+                            <input type="number" class="form-control" value={this.state.hospitalCharges} id="hospitalCharges" placeholder="Enter Hosplital Charges" name="hospitalCharges" onChange={this.handleHospitalChargesChange} />
                         </div>
                         <div class="form-group">
                             <label for="laboraryCharges">Doctor ID:</label>
-                            <input type="laboraryCharges" class="form-control" value={this.state.laboraryCharges} id="laboraryCharges" placeholder="Enter Laboratory Chargers" name="laboraryCharges" onChange={this.handlelaboraryChargesChange} />
+                            <input type="number" class="form-control" value={this.state.laboraryCharges} id="laboraryCharges" placeholder="Enter Laboratory Charges" name="laboraryCharges" onChange={this.handlelaboraryChargesChange} />
                         </div>
                         <div class="form-group">
                             <label for="OtherCharges">Doctor ID:</label>
-                            <input type="OtherCharges" class="form-control" value={this.state.OtherCharges} id="OtherCharges" placeholder="Enter Other Charges" name="OtherCharges" onChange={this.handleOtherChargesChange} />
+                            <input type="number" class="form-control" value={this.state.OtherCharges} id="OtherCharges" placeholder="Enter Other Charges" name="OtherCharges" onChange={this.handleOtherChargesChange} />
                         </div>
                                                             
-                        <button type="button" onClick={this.handleClick} class="btn btn-primary">Add New</button>
+                        <button type="button" onClick={this.handleClick.bind(this)} class="btn btn-primary">Add New</button>
                     </form>
 
                 </div>

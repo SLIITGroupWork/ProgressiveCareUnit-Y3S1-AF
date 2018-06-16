@@ -12,6 +12,8 @@ const billRoutes = require('./controller-routers/bill.route');
 const billGenerateRoutes = require('./controller-routers/billGenerate.route');
 const patientAllergiesRoutes= require('./controller-routers/patient-allergies.routes');
 const patientPhysicalExamsRoutes= require('./controller-routers/patient-physical-exams.routes');
+const doctor= require('./controller-routers/doctor.routes');
+const doctorPatient= require('./controller-routers/doctor-patient.routes');
 
 // Routes that don't need secured
 router.use('/authorizations', authorizationsRoutes);

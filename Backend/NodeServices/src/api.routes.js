@@ -21,8 +21,8 @@ router.use('/authorizations', authorizationsRoutes);
 router.use('/patient-registrations', passport.authenticate('jwt', { session: false }), patientRegistrationsRoutes);
 router.use('/users', passport.authenticate('jwt', { session: false }), usersRoutes);
 
-router.use('./doctor', doctor);
-router.use('/doctor-patient', doctorPatient);
+router.use('/doctors', doctor);
+router.use('/doctor-patients', doctorPatient);
 
 //router.use('/drugs',passport.authenticate('jwt', { session: false }), drugRoutes);
 router.use('/drugs',drugRoutes);

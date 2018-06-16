@@ -5,7 +5,7 @@ class DoctorPatientController extends BaseController {
 
     addDoctorPatient(doctorPatient) {
         return new Promise((resolve, reject) => {
-            doctorPatientService.addDoctorPatient().then((data) => {
+            doctorPatientService.addDoctorPatient(doctorPatient).then((data) => {
                 resolve(this.createResponse(this.statusCodes.Created, data));
             }).catch((err) => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));

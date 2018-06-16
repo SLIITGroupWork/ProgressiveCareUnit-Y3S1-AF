@@ -11,6 +11,11 @@ import Login from './components/auth/Login';
 import AddUser from './components/users/AddUser';
 import QuickPatientRegistration from './components/patient-registrations/QuickPatientRegistration';
 
+import Feedback from './components/feedbacks/Feedback';
+import DoctorRegistration from './components/doctor/DoctorRegistration';
+import NextPatient from './components/doctor/NextPatient';
+import NextPatientDetails from './components/doctor/NextPatientDetails';
+
 
 class App extends Component {
     render() {
@@ -28,6 +33,14 @@ class App extends Component {
                         <Route exact path="/user/add" component={ AddUser }/>
 
                         <Route exact path="/quick-patient-resitration" component={ QuickPatientRegistration }/>
+
+                        <Route exact path="/feedbacks" component={ Feedback }/>
+
+                        <Route exact path="/doctors/registration" component={ DoctorRegistration }/>
+
+                        <Route exact path="/doctors" component={ NextPatient }/>
+
+                        <Route exact path="/doctors/nextPatient" component={ NextPatientDetails } />
 
                     </div>
 

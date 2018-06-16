@@ -5,13 +5,14 @@ const doctorConsts = require('../consts/doctor.consts');
 class DoctorPatientService extends BaseService {
 
     addDoctorPatient(doctorPatient) {
+        console.log(doctorPatient);
         return new Promise((resolve, reject) => {
-            let doctorPatient = new this.unitOfWork.doctorPatientSchema({
+            let saveDoctorPatient = new this.unitOfWork.doctorPatientSchema({
                 doctorId: doctorPatient.doctorId,
                 patientId: doctorPatient.patientId,
                 isTreated: false
             });
-            doctorPatient.save().then(() => {
+            saveDoctorPatient.save().then(() => {
                 Doctor.updateDoctorsStatus(doctorPatient.doctorId, doctorConsts.doctorStatus.INTREATMENT)
                 .then(() => {
                     Doctor.updatePatientIsTreated(doctorPatient.patientId, true).then(() => {

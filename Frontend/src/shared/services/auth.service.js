@@ -7,7 +7,7 @@ export default class AuthService {
         this.apiService = new ApiService();
         this.tokenData = this.apiService.tokenData;
     }
-
+    
     get isLoggedIn() {
         return (this.tokenData ? true : false);
     }
@@ -16,6 +16,36 @@ export default class AuthService {
         
         if (this.isLoggedIn) {
             return this.tokenData.username;
+        }
+        else {
+            return 'Unknown'
+        }
+    }
+
+    get firstName() {
+        
+        if (this.isLoggedIn) {
+            return this.tokenData.firstName;
+        }
+        else {
+            return 'Unknown'
+        }
+    }
+
+    get lastName() {
+        
+        if (this.isLoggedIn) {
+            return this.tokenData.lastName;
+        }
+        else {
+            return 'Unknown'
+        }
+    }
+
+    get nic() {
+        
+        if (this.isLoggedIn) {
+            return this.tokenData.nic;
         }
         else {
             return 'Unknown'

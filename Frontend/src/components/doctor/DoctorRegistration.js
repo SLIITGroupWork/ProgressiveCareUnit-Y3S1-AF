@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 export default class DoctorRegistration extends Component {
 
@@ -26,8 +27,20 @@ export default class DoctorRegistration extends Component {
     }
 
     onSubmit(e) {
-
         e.preventDefault();
+        axios.post('http://localhost:5556/api/doctors', {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            nic: this.state.nic,
+            phoneNumber: this.state.phoneNumber,
+            specialization: this.state.specialization
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     clearForm(e) {

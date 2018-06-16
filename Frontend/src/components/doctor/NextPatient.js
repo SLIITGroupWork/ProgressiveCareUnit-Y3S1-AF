@@ -9,7 +9,8 @@ export default class NextPatient extends Component {
             status: ''
         }
 
-        // this.onClick = this.onClick.bind(this);
+        this.changeStatus = this.changeStatus.bind(this);
+        this.getNextPatient = this.getNextPatient.bind(this);
     }
 
     changeStatus() {

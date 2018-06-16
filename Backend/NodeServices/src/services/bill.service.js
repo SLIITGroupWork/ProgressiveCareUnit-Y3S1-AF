@@ -17,6 +17,7 @@ class billService extends BaseService {
     }
 
     addBillDetails(billData) {
+       
 
         return new Promise((resolve, reject) => {
 
@@ -30,8 +31,10 @@ class billService extends BaseService {
             });
 
             billDetails.save().then(data => {
+               
                 resolve(data);
             }).catch(err => {
+                
                 reject(err);
             });
         });

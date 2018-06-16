@@ -31,7 +31,7 @@ router.use('/patient-physicalExams',patientPhysicalExamsRoutes);
 //router.use('/drugs',passport.authenticate('jwt', { session: false }), drugRoutes);
 router.use('/drugs',drugRoutes);
 router.use('/prescriptions',passport.authenticate('jwt', { session: false }), prescriptionRoutes);
-router.use('/bill',passport.authenticate('jwt', { session: false }), billRoutes);
+router.use('/bill', billRoutes);
 router.use('/billPDF',passport.authenticate('jwt', { session: false }), billGenerateRoutes);
 
 module.exports = router;

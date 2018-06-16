@@ -23,13 +23,15 @@ router.get('/searchAllDrugs', (request, response) => {
 });
 
 router.post('/addNewDrug', (request, response) => {
-    //console.log("checkingRoute");
+   
 
-    let drugRequest = createRequest(request.body);
+    //let drugRequest = createRequest(request.body);
 
-    drugController.insertDrug(drugRequest).then(drugResponse => {
+    drugController.insertDrug(request.body).then(drugResponse => {
+        console.log(drugResponse)
         response.status(drugResponse.status).send(drugResponse);
     }).catch(err => {
+        console.log(err)
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     });
 });

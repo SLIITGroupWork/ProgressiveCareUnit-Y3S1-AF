@@ -16,10 +16,12 @@ class prescriptionController extends BaseController {
     }
 
     addPrescription(prescriptionData) {
+        console.log("CheckComntroller")
+        console.log(prescriptionData)
 
         return new Promise((resolve, reject) => {
 
-            prescriptionService.addNewPrescription(prescriptionData.data).then(data => {
+            prescriptionService.addNewPrescription(prescriptionData).then(data => {
                 resolve(this.createResponse(this.statusCodes.Created, data));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
@@ -28,10 +30,12 @@ class prescriptionController extends BaseController {
     }
 
     updatePrescription(patientID,prescriptionData) {
+        console.log("CheckComntroller")
+        console.log(prescriptionData)
 
         return new Promise((resolve, reject) => {
 
-            prescriptionService.updatePrescription(patientID,prescriptionData.data).then(data => {
+            prescriptionService.updatePrescription(patientID,prescriptionData).then(data => {
                 resolve(this.createResponse(this.statusCodes.OK, data));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));

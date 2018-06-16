@@ -13,10 +13,17 @@ import Login from './components/auth/Login';
 import AddUser from './components/users/AddUser';
 import QuickPatientRegistration from './components/patient-registrations/QuickPatientRegistration';
 
+        
 import Feedback from './components/feedbacks/Feedback';
 import DoctorRegistration from './components/doctor/DoctorRegistration';
 import NextPatient from './components/doctor/NextPatient';
 import NextPatientDetails from './components/doctor/NextPatientDetails';
+//import PrescriptionList from './components/Prescription/prescriptionList';
+import AddBill from './components/Bill/billNew';
+import ViewBill from './components/Bill/billView';
+import SearchBill from './components/Bill/billSearch';
+import NewPrescription from './components/Prescription/prescriptionNew';
+
 
 
 class App extends Component {
@@ -51,6 +58,7 @@ class App extends Component {
 
                         <Route exact path="/quick-patient-resitration" component={ QuickPatientRegistration }/>
 
+
                         <Route exact path="/feedbacks" component={ Feedback }/>
 
                         <Route exact path="/doctors/registration" component={ DoctorRegistration }/>
@@ -59,7 +67,18 @@ class App extends Component {
 
                         <Route exact path="/doctors/nextPatient" component={ NextPatientDetails } />
 
+
+                        <Route exact path="/bill/new" component={ AddBill } />
+
+                        <Route exact path="/bill/view" component={ ViewBill } />
+
+                        <Route exact path="/bill/search" component={ SearchBill } />
+                        <Route exact path="/prescription/new" component={ NewPrescription } />
+
+
                     </div>
+                    
+
 
                     <Footer />
                 </div>

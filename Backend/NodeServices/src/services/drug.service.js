@@ -17,6 +17,7 @@ class DrugService extends BaseService {
     }
 
     addNewDrug(drugData) {
+        
 
         return new Promise((resolve, reject) => {
             let drug = new this.unitOfWork.drugsSchema({

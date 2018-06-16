@@ -17,9 +17,12 @@ router.get('/searchPrescription/:name', (request, response) => {
 
 router.post('/addPrescription', (request, response) => {
 
-    let prescriptionRequest = createRequest(request.body);
+    //let prescriptionRequest = createRequest(request.body);
+    console.log("Route")
+    console.log(request.body)
 
-    prescriptionController.addPrescription(prescriptionRequest).then(prescriptionResponse => {
+
+    prescriptionController.addPrescription(request.body).then(prescriptionResponse => {
         response.status(prescriptionResponse.status).send(prescriptionResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
@@ -27,9 +30,9 @@ router.post('/addPrescription', (request, response) => {
 });
 router.put('/updatePrescription/:patientID', (request, response) => {
 
-    let prescriptionRequest = createRequest(request.body);
+    //let prescriptionRequest = createRequest(request.body);
 
-    prescriptionController.updatePrescription(request.params.patientID,prescriptionRequest).then(prescriptionResponse => {
+    prescriptionController.updatePrescription(request.params.patientID,request.body).then(prescriptionResponse => {
         response.status(prescriptionResponse.status).send(prescriptionResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);

@@ -33,7 +33,7 @@ class ClientList extends Component {
         });console.log(email)
     }
     getPrescription() {
-        axios.get('http://localhost:5556/api/prescriptions', {
+        axios.get('http://localhost:5556/api/prescriptions/searchPrescription/'+PatientName, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
             },
@@ -75,7 +75,7 @@ class ClientList extends Component {
         return (
             <div >
                 <div>
-                    <h2>prescription Details</h2>
+                    <h2>Prescription Details</h2>
                     <form class="navbar-form navbar-left" action="/action_page.php">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search" name="search" />

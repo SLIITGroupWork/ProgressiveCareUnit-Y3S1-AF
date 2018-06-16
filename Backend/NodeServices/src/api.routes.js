@@ -10,9 +10,10 @@ const drugRoutes = require('./controller-routers/drug.routes');
 const prescriptionRoutes = require('./controller-routers/prescription.route');
 const billRoutes = require('./controller-routers/bill.route');
 const billGenerateRoutes = require('./controller-routers/billGenerate.route');
-
-const doctor = require('./controller-routers/doctor.routes');
-const doctorPatient = require('./controller-routers/doctor-patient.routes');
+const patientAllergiesRoutes= require('./controller-routers/patient-allergies.routes');
+const patientPhysicalExamsRoutes= require('./controller-routers/patient-physical-exams.routes');
+const doctor= require('./controller-routers/doctor.routes');
+const doctorPatient= require('./controller-routers/doctor-patient.routes');
 
 // Routes that don't need secured
 router.use('/authorizations', authorizationsRoutes);
@@ -21,15 +22,16 @@ router.use('/authorizations', authorizationsRoutes);
 router.use('/patient-registrations', passport.authenticate('jwt', { session: false }), patientRegistrationsRoutes);
 router.use('/users', passport.authenticate('jwt', { session: false }), usersRoutes);
 
-router.use('./doctor', doctor);
-router.use('/doctor-patient', doctorPatient);
+router.use('/doctors', doctor);
+router.use('/doctor-patients', doctorPatient);
+
+router.use('/patient-allergies',patientAllergiesRoutes);
+router.use('/patient-physicalExams',patientPhysicalExamsRoutes);
 
 //router.use('/drugs',passport.authenticate('jwt', { session: false }), drugRoutes);
 router.use('/drugs',drugRoutes);
 router.use('/prescriptions',passport.authenticate('jwt', { session: false }), prescriptionRoutes);
-router.use('/bill',passport.authenticate('jwt', { session: false }), billRoutes);
+router.use('/bill', billRoutes);
 router.use('/billPDF',passport.authenticate('jwt', { session: false }), billGenerateRoutes);
-
-
 
 module.exports = router;

@@ -37,7 +37,7 @@ router.put('/editBillDetails/:patientId', (request, response) => {
 
     //let billRequest = createRequest(request.body);
 
-        billGenerateController.updateBillDetails(patientId,request.body).then(billResponse => {
+        billGenerateController.editBillDetails(patientId,request.body).then(billResponse => {
         response.status(billResponse.status).send(billResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);

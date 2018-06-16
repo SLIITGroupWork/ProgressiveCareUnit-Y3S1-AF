@@ -73,7 +73,7 @@ class billNew extends Component {
     
     handleClick = event => {
         event.preventDefault();
-        event.stopPropagation();
+        //event.stopPropagation();
         axios.post('http://localhost:5556/api/bill/addNewBillDetails', {
             patientId: this.state.patientId,
             //drugPrice: this.state.drugPrice,

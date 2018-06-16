@@ -11,13 +11,22 @@ import Login from './components/auth/Login';
 import AddUser from './components/users/AddUser';
 import QuickPatientRegistration from './components/patient-registrations/QuickPatientRegistration';
 
+        
+import Feedback from './components/feedbacks/Feedback';
+import DoctorRegistration from './components/doctor/DoctorRegistration';
+import NextPatient from './components/doctor/NextPatient';
+import NextPatientDetails from './components/doctor/NextPatientDetails';
 //import PrescriptionList from './components/Prescription/prescriptionList';
 import AddBill from './components/Bill/billNew';
 import ViewBill from './components/Bill/billView';
 import SearchBill from './components/Bill/billSearch';
 import NewPrescription from './components/Prescription/prescriptionNew';
 
+
+
 class App extends Component {
+
+    
     render() {
         return (
             <Router>
@@ -34,12 +43,23 @@ class App extends Component {
 
                         <Route exact path="/quick-patient-resitration" component={ QuickPatientRegistration }/>
 
+
+                        <Route exact path="/feedbacks" component={ Feedback }/>
+
+                        <Route exact path="/doctors/registration" component={ DoctorRegistration }/>
+
+                        <Route exact path="/doctors" component={ NextPatient }/>
+
+                        <Route exact path="/doctors/nextPatient" component={ NextPatientDetails } />
+
+
                         <Route exact path="/bill/new" component={ AddBill } />
 
-                        <Route exact path="/bill/view" component={ ViewBill } />
-                        
-                        <Route exact path="/bill/search" component={ SearchBill } />
-                        <Route exact path="/prescription/new" component={ NewPrescription } />
+<Route exact path="/bill/view" component={ ViewBill } />
+
+<Route exact path="/bill/search" component={ SearchBill } />
+<Route exact path="/prescription/new" component={ NewPrescription } />
+>>>>>>> 7bf910ceb8080ef2de05bfb19cb2df00cce348a1
 
                     </div>
                     

@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
+import PCUService from '../../shared/services/pcu.service';
+import DangerTip from '../message-tips/DangerTip';
 
 export default class AddUser extends Component {
 
     constructor() {
         super();
 
+        this.pcuService = new PCUService();
+
         this.state = {
             firstName: '',
             lastName: '',
             nic: '',
             gender: '',
-            contact: ''
+            contact: '',
+            isValid: false,
+            errorMessage: null
         }
 
         this.onChange = this.onChange.bind(this);
@@ -23,11 +29,65 @@ export default class AddUser extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
+
+        setTimeout(() => {
+            let isValid = true;
+
+            for (let property in this.state) {
+
+                if (this.state.hasOwnProperty(property)) {
+
+                    if (property === 'isValid' || property === 'errorMessage')
+                        continue;
+
+                    let val = this.state[property];
+
+                    if (val === null || val === undefined || val === '') {
+                        isValid = false;
+                        break;
+                    }
+                }
+            }
+
+            if (this.state.errorMessage) {
+                this.setState({
+                    isValid: isValid,
+                    errorMessage: null
+                });
+            }
+            else {
+                this.setState({ isValid: isValid });
+            }
+
+        }, 100);
     }
 
     onSubmit(e) {
 
         e.preventDefault();
+
+        if (this.state.isValid) {
+
+            let rquest = {
+                data: this.state
+            }
+
+            delete rquest.data.isValid;
+            delete rquest.data.errorMessage;
+
+            this.pcuService.addNewUser(rquest).then(usersResponse => {
+
+                if (usersResponse.isSuccess) {
+
+                    this.clearForm(null);
+                }
+                else {
+                    this.setState({
+                        errorMessage: usersResponse.message
+                    })
+                }
+            });
+        }
     }
 
     clearForm(e) {
@@ -37,7 +97,9 @@ export default class AddUser extends Component {
             lastName: '',
             nic: '',
             gender: '',
-            contact: ''
+            contact: '',
+            isValid: false,
+            errorMessage: null
         });
     }
 
@@ -106,14 +168,24 @@ export default class AddUser extends Component {
                                         onChange={this.onChange} />
                                 </div>
 
-                                <div className="row">
-                                    <div className="col-lg-6 mt-5">
+                                <div className="row mt-5">
+
+                                    <div className="col-lg-6 mt-1">
                                         <button className="btn btn-secondary btn-block" onClick={this.clearForm}>Clear</button>
                                     </div>
 
-                                    <div className="col-lg-6 mt-5">
-                                        <input type="submit" className="btn btn-info btn-block" />
+                                    <div className="col-lg-6 mt-1">
+                                        <input type="submit" className="btn btn-info btn-block" disabled={!this.state.isValid} />
                                     </div>
+
+                                    {
+                                        this.state.errorMessage ? 
+                                        (
+                                            <div className="col-lg-12 mt-3">
+                                                <DangerTip title="Failed!" description={this.state.errorMessage} /> 
+                                            </div>
+                                        ) : null
+                                    }
                                 </div>
 
                             </form>

@@ -25,7 +25,7 @@ class DoctorService extends BaseService {
 
     addDoctors(doctor) {
         return new Promise((resolve, reject) => {
-            let doctor = new this.unitOfWork.doctorSchema({
+            let saveDoctor = new this.unitOfWork.doctorSchema({
                 firstName: doctor.firstName,
                 lastName: doctor.lastName,
                 nic: doctor.nic,
@@ -33,7 +33,7 @@ class DoctorService extends BaseService {
                 doctorStatus: doctorConsts.doctorStatus.NOTAVAILABLE,
                 specialization: doctor.specialization
             });
-            doctor.save().then((data) => {
+            saveDoctor.save().then((data) => {
                 resolve(data);
             }).catch((err) => {
                 reject(err);
@@ -76,6 +76,7 @@ class DoctorService extends BaseService {
     getNotTreatedPatient() {
         return new Promise((resolve, reject) => {
             this.unitOfWork.patientRegistrationSchema.find({ isTreated: false }).exec().then((data) => {
+                console.log(data);
                 resolve(data);
             }).catch((err) => {
                 reject(err);
@@ -85,10 +86,12 @@ class DoctorService extends BaseService {
 
     getNextPatient() {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.patientRegistrationSchema.findOne({ isTreated: false },{$orderby: { priority : -1 }})
-            .exec().then((data) => {
-                resolve(data);
+            this.unitOfWork.patientRegistrationSchema.find({ isTreated: false }).exec()
+            .then((data) => {
+                data.sort((a,b)=>{return a.priority - b.priority});
+                resolve(data[0]);
             }).catch((err) => {
+                console.log(err);
                 reject(err);
             });
         });

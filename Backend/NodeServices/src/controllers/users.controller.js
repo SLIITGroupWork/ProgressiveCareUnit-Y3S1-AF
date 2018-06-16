@@ -57,8 +57,6 @@ class UsersController extends BaseController {
                 }
             }).catch(err => {
                 
-                    
-                console.log(err)
                 reject(this.createResponse(this.statusCodes.InternalServerError, undefined, err));
             });
         });

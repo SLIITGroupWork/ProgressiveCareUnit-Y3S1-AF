@@ -29,7 +29,7 @@ class PatientRegistrationController extends BaseController {
             });
         });
     }
-    updateBillDetails(patientId,billRequest) {
+    editBillDetails(patientId,billRequest) {
 
         return new Promise((resolve, reject) => {
 

@@ -35,15 +35,15 @@ router.get('/status/:status', (request, response) => {
     });
 });
 
-router.get('/notTreated', (request, response) => {
-    doctorController.getNotTreatedPatient.then((data) => {
+router.get('/patients/notTreated', (request, response) => {
+    doctorController.getNotTreatedPatient().then((data) => {
         response.status(data.status).send(data);
     }).catch((err) => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     });
 });
 
-router.get('/nextPatient', (request, response) => {
+router.get('/patients/next', (request, response) => {
     doctorController.getNextPatient().then((data) => {
         response.status(data.status).send(data);
     }).catch((err) => {

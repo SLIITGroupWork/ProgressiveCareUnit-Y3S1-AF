@@ -25,3 +25,5 @@ router.post('/',(request,response)=>{
         response.status(err.status).send(err);
     })
 })
+
+module.exports=router;

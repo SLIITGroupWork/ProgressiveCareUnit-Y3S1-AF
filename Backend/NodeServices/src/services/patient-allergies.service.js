@@ -24,8 +24,9 @@ class PatientAllergyService extends BaseService{
     addPatientAllergy(allergyData){
         return new Promise((resolve,reject)=>{
             let allergy= new this.unitOfWork.patientAllergiesSchema({
-                patientId:allergyData.patientId,//need to be clarify
-                patientName:allergyData.patientName,//need to be clarify 
+                // patientId:allergyData.patientId,need to be clarify
+                // patientName:allergyData.patientName,need to be clarify 
+                allergyName:allergyData.allergyType,
                 allergyType:allergyData.allergyType,
                 description:allergyData.description   
             })
@@ -35,6 +36,16 @@ class PatientAllergyService extends BaseService{
                 reject(err);
             });
         });
+    }
+
+    updatePatientAllergy(id,data){
+        return new Promise((resolve,reject)=>{
+            this.unitOfWork.patientAllergiesSchema.update({_id:id},data).then(data=>{
+                resolve(data);
+            }).catch(err=>{
+                resolve(err);
+            })
+        })
     }
 }
 

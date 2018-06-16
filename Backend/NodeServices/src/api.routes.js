@@ -20,8 +20,8 @@ router.use('/authorizations', authorizationsRoutes);
 router.use('/patient-registrations', passport.authenticate('jwt', { session: false }), patientRegistrationsRoutes);
 router.use('/users', passport.authenticate('jwt', { session: false }), usersRoutes);
 
-router.use('./doctor', doctor);
-router.use('/doctor-patient', doctorPatient);
+// router.use('./doctor', doctor);
+// router.use('/doctor-patient', doctorPatient);
 
 router.use('/patient-allergies',patientAllergiesRoutes);
 router.use('/patient-physicalExams',patientPhysicalExamsRoutes);

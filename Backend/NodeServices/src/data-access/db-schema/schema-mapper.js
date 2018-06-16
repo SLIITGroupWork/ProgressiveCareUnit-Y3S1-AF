@@ -34,12 +34,8 @@ mongoose.model(tableNames.PrescriptionDrugs, prescriptionDrugsSchema);
 mongoose.model(tableNames.bill, billSchema);
 
 mongoose.model(tableNames.PatientAllergies, patientAllergiesSchema);
-<<<<<<< HEAD
-mongoose.model(tableNames.patientPhysicalExams, patientPhysicalExamsSchema);
 mongoose.model(tableNames.UserPatientAllergies,userPatientAllergiesSchema);
-=======
 mongoose.model(tableNames.PatientPhysicalExams, patientPhysicalExamsSchema);
->>>>>>> 935dad50262cfc2ea77c9bf7eb795e694485c1a8
 
 mongoose.model(tableNames.Comments, commentSchema);
 mongoose.model(tableNames.Doctor, doctorSchema);

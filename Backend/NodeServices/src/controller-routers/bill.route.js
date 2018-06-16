@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const billGenerateController = require('../controllers/billGenerate.controller');
-const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
 router.get('/searchBillDetailsByPatientId/:patientId', (request, response) => {

@@ -1,4 +1,4 @@
-const mongoose  = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const doctorSchema = new Schema({
@@ -23,7 +23,7 @@ const doctorSchema = new Schema({
         type: String,
         require: true
     },
-    specialization : {
+    specialization: {
         type: String,
         require: false
     }

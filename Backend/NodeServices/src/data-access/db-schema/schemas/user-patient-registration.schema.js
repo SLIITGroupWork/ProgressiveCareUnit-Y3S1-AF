@@ -16,6 +16,4 @@ const userPatientRegistrationSchema = new Schema({
     }
 });
 
-
-
 module.exports = userPatientRegistrationSchema;

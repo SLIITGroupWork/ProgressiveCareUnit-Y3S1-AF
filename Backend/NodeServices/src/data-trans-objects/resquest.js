@@ -8,10 +8,10 @@
  * @param {request} request 
  * @returns { data: data, requestDateTime: CurrentTime } Created request
  */
-const createRequest = (request = { }) => {
-    
+const createRequest = (request = {}) => {
+
     if (!request) {
-        request = { };
+        request = {};
     }
 
     request.requestDateTime = new Date();

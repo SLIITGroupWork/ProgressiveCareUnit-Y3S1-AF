@@ -35,7 +35,7 @@ class UsersController extends BaseController {
     getUserByNIC(nic) {
 
         return new Promise((resolve, reject) => {
-            
+
             userService.getUserByNIC(nic).then(user => {
                 resolve(this.createResponse(this.statusCodes.OK, user, null, this._removeProperties));
             }).catch(err => {
@@ -56,7 +56,7 @@ class UsersController extends BaseController {
                     resolve(this.createResponse(this.statusCodes.Conflict, undefined, "NIC is already exists", this._removeProperties));
                 }
             }).catch(err => {
-                
+
                 reject(this.createResponse(this.statusCodes.InternalServerError, undefined, err));
             });
         });

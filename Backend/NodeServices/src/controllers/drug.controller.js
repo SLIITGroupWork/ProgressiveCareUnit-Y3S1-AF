@@ -18,8 +18,6 @@ class drugController extends BaseController {
     insertDrug(drugData) {
 
         return new Promise((resolve, reject) => {
-           // let request = this.createRequest(drugData);
-            
 
             drugService.addNewDrug(drugData).then(data => {
                 resolve(this.createResponse(this.statusCodes.Created, true, data));
@@ -42,8 +40,8 @@ class drugController extends BaseController {
             });
         });
     }
-    
-    
+
+
 }
 
 module.exports = new drugController();

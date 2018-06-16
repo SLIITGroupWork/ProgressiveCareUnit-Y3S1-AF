@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const drugController = require('../controllers/drug.controller');
-const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
 
 router.get('/searchDrugByName/:name', (request, response) => {

@@ -25,7 +25,7 @@ router.get('/generateBill/:patientId', (request, response) => {
     //const content = req.body.content
 
     console.log(request.params)
-    const content =billGenerateController.generateBill(request.params.patientId,request.body);
+    const content = billGenerateController.generateBill(request.params.patientId, request.body);
     doc.y = 300
     doc.text(content, 50, 50);
     doc.pipe(response);

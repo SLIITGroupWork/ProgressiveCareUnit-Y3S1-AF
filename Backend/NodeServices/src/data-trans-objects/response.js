@@ -4,7 +4,7 @@ const createResponse = (status, data = [], message = null, removeProperties = []
     if (isSuccess === null) {
         isSuccess = (status >= 100 && status < 400) ? true : false;
     }
-    
+
     if (!(isSuccess || message)) {
         message = "Something went wrong...";
     }

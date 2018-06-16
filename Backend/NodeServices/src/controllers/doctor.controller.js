@@ -12,7 +12,7 @@ class DoctorController extends BaseController {
             });
         });
     }
-            
+
     getDoctorById(id) {
         return new Promise((resolve, reject) => {
             doctorService.getDoctorById(id).then((data) => {

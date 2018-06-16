@@ -8,13 +8,13 @@ module.exports = {
     Presciptions: 'Presciptions',
     Drugs: 'Drugs',
     PrescriptionDrugs: 'PrescriptionDrugs',
-    bill:'bill',
+    bill: 'bill',
 
     Comments: 'Comments',
     Doctor: 'Doctor',
     DoctorPatient: 'DoctorPatient',
-    
+
     PatientAllergies: 'PatientAllergies',
-    PatientPhysicalExams:'PatientPhysicalExams',
-    UserPatientAllergies:'UserPatientAllergies'
+    PatientPhysicalExams: 'PatientPhysicalExams',
+    UserPatientAllergies: 'UserPatientAllergies'
 }

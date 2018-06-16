@@ -17,9 +17,9 @@ const prescriptionDrugsSchema = new Schema({
         type: Number,
         require: true
     },
-    description:{
-        type:String,
-        require:true
+    description: {
+        type: String,
+        require: true
     }
 });
 

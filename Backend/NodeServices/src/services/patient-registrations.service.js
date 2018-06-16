@@ -125,7 +125,7 @@ class PatientRegistrationService extends BaseService {
                     priority: patientRegistrationData.priority
                 }
             ).then(patient => {
-                
+
                 patient.name = patientRegistrationData.name;
                 patient.description = patientRegistrationData.description;
                 patient.contact = patientRegistrationData.contact;

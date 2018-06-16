@@ -4,11 +4,11 @@ const doctorPatientController = require('../controllers/doctor-patient.controlle
 const httpStatus = require('../consts/http-status.consts');
 
 router.post('/', (request, response) => {
-        doctorPatientController.addDoctorPatient(request.body).then((data) => {
-            response.status(data.status).send(data);
-        }).catch((err) => {
-            response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
-        });
+    doctorPatientController.addDoctorPatient(request.body).then((data) => {
+        response.status(data.status).send(data);
+    }).catch((err) => {
+        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
+    });
 });
 
 router.get('/inTreament', (request, response) => {

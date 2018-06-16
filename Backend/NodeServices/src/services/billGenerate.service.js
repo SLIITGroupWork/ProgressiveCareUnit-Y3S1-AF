@@ -5,65 +5,65 @@ const prescriptionService = require('./prescription.service');
 
 class billGeneratorService extends BaseService {
 
-    calculateDrugPrice(patientId,startDate,endDate){
-        return new Promise((resolve,reject)=>{
-            this.unitOfWork.presciptionSchema.find({patientId:patientId,$and: [ { date: { $gte: startDate } }, { date: { $lt: endDate } } ] },{_id:true})
-            .then(prescriptionIds=>{
-                for(let j=0;j<prescriptionIds.length;j++){
-                    this.unitOfWork.prescriptionDrugsSchema.find({prescriptionIds:prescriptionIds[j]},{drugID:true,quantity:true,_id:false})
-                    .then(drugData=>{
-                        let totalprice;
-                        for(let i=0;i<drugData.drugID.length;i++){
-                            let price = drugService.getDrugPrice(drugData.drugID[i]);
-                            totalprice = totalprice+(price*drugData.quantity);                            
-    
-                        }
-                        
-                        resolve(totalprice);
+    calculateDrugPrice(patientId, startDate, endDate) {
+        return new Promise((resolve, reject) => {
+            this.unitOfWork.presciptionSchema.find({ patientId: patientId, $and: [{ date: { $gte: startDate } }, { date: { $lt: endDate } }] }, { _id: true })
+                .then(prescriptionIds => {
+                    for (let j = 0; j < prescriptionIds.length; j++) {
+                        this.unitOfWork.prescriptionDrugsSchema.find({ prescriptionIds: prescriptionIds[j] }, { drugID: true, quantity: true, _id: false })
+                            .then(drugData => {
+                                let totalprice;
+                                for (let i = 0; i < drugData.drugID.length; i++) {
+                                    let price = drugService.getDrugPrice(drugData.drugID[i]);
+                                    totalprice = totalprice + (price * drugData.quantity);
 
-                    }).catch(err=>{
-                        reject(err);
-                    });
-                }        
-                                
-            }).catch(err =>{
-                reject(err);
+                                }
 
-            });
-            
+                                resolve(totalprice);
+
+                            }).catch(err => {
+                                reject(err);
+                            });
+                    }
+
+                }).catch(err => {
+                    reject(err);
+
+                });
+
         });
     }
-    gen (Drugbill,expenses){
-        return Drugbill+expenses.hospitalCharges+expenses.laboraryCharges+expenses.OtherCharges;
+    gen(Drugbill, expenses) {
+        return Drugbill + expenses.hospitalCharges + expenses.laboraryCharges + expenses.OtherCharges;
     }
 
     //expenses = the other charges related to the bill than the drugs amount
-    calculateTotal(patientId,startdate,endDate,expenses) {
-        return new Promise((resolve,reject)=>{
-            let DrugBill = calculateDrugPrice(patientId,startdate,endDate);
-            this.gen(DrugBill,expenses).then(total=>{
-                resolve(total,DrugBill);
-            }).catch(err=>{
+    calculateTotal(patientId, startdate, endDate, expenses) {
+        return new Promise((resolve, reject) => {
+            let DrugBill = calculateDrugPrice(patientId, startdate, endDate);
+            this.gen(DrugBill, expenses).then(total => {
+                resolve(total, DrugBill);
+            }).catch(err => {
                 reject(err);
             })
         })
 
-        
+
     }
-    generateTotalBill(patientId,startdate,endDate){
-        return new Promise((resolve,reject)=>{
-            this.unitOfWork.billSchema.find({patientId:patientId}).exec().then(billDetails =>{
-                let totalAmount = this.calculateTotal(patientId,startdate,endDate,billDetails)
-                this.unitOfWork.billSchema.update({patientId:patientId},{$set:{drugPrice:totalprice}});
-                resolve(billDetails,totalAmount);
-            }).catch(err =>{
+    generateTotalBill(patientId, startdate, endDate) {
+        return new Promise((resolve, reject) => {
+            this.unitOfWork.billSchema.find({ patientId: patientId }).exec().then(billDetails => {
+                let totalAmount = this.calculateTotal(patientId, startdate, endDate, billDetails)
+                this.unitOfWork.billSchema.update({ patientId: patientId }, { $set: { drugPrice: totalprice } });
+                resolve(billDetails, totalAmount);
+            }).catch(err => {
                 reject(err);
             })
         });
     }
 
-        
+
 }
 
- module.exports = new billGeneratorService();
+module.exports = new billGeneratorService();
 

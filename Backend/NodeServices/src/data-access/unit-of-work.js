@@ -11,9 +11,9 @@ const drugsSchema = schemaMapper.model(tableNames.Drugs);
 const prescriptionDrugsSchema = schemaMapper.model(tableNames.PrescriptionDrugs);
 const billSchema = schemaMapper.model(tableNames.bill);
 
-const patientAllergiesSchema=schemaMapper.model(tableNames.PatientAllergies);
-const patientPhysicalExamsSchema=schemaMapper.model(tableNames.PatientPhysicalExams);
-const userPatientAllergiesSchema=schemaMapper.model(tableNames.UserPatientAllergies);
+const patientAllergiesSchema = schemaMapper.model(tableNames.PatientAllergies);
+const patientPhysicalExamsSchema = schemaMapper.model(tableNames.PatientPhysicalExams);
+const userPatientAllergiesSchema = schemaMapper.model(tableNames.UserPatientAllergies);
 
 const commentSchema = schemaMapper.model(tableNames.Comments);
 const doctorSchema = schemaMapper.model(tableNames.Doctor);
@@ -28,13 +28,13 @@ module.exports = {
     presciptionSchema: presciptionSchema,
     drugsSchema: drugsSchema,
     prescriptionDrugsSchema: prescriptionDrugsSchema,
-    billSchema:billSchema,
+    billSchema: billSchema,
 
     commentSchema: commentSchema,
     doctorSchema: doctorSchema,
     doctorPatientSchema: doctorPatientSchema,
 
-    patientAllergiesSchema:patientAllergiesSchema,
-    patientPhysicalExamsSchema:patientPhysicalExamsSchema,
-    userPatientAllergiesSchema:userPatientAllergiesSchema
+    patientAllergiesSchema: patientAllergiesSchema,
+    patientPhysicalExamsSchema: patientPhysicalExamsSchema,
+    userPatientAllergiesSchema: userPatientAllergiesSchema
 }

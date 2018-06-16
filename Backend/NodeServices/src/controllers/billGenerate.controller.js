@@ -17,7 +17,7 @@ class PatientRegistrationController extends BaseController {
     }
 
     insertBillDetails(billRequest) {
-        
+
         return new Promise((resolve, reject) => {
 
             console.log(billRequest)
@@ -29,18 +29,18 @@ class PatientRegistrationController extends BaseController {
             });
         });
     }
-    editBillDetails(patientId,billRequest) {
+    editBillDetails(patientId, billRequest) {
 
         return new Promise((resolve, reject) => {
 
-            billService.updateBillDetails(patientId,billRequest).then(bill => {
+            billService.updateBillDetails(patientId, billRequest).then(bill => {
                 resolve(this.createResponse(this.statusCodes.OK, bill));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });
     }
-    searchAllBillDetails(){
+    searchAllBillDetails() {
         return new Promise((resolve, reject) => {
 
             billService.getAllBillDetails().then(bill => {
@@ -50,17 +50,17 @@ class PatientRegistrationController extends BaseController {
             });
         });
     }
-    generateBill(patientId,startdate,endDate){
+    generateBill(patientId, startdate, endDate) {
         return new Promise((resolve, reject) => {
 
-            billGenerateService.generateTotalBill(patientId,startdate,endDate).then(bill => {
+            billGenerateService.generateTotalBill(patientId, startdate, endDate).then(bill => {
                 resolve(this.createResponse(this.statusCodes.OK, bill));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });
     }
-    
+
 }
 
 module.exports = new PatientRegistrationController();

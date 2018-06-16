@@ -75,7 +75,7 @@ class PatientRegistrationController extends BaseController {
                     resolve(this.createResponse(this.statusCodes.BadRequest, null, "Invaild reference no"));
                 }
             }).catch(err => {
-                
+
                 console.log(err);
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });

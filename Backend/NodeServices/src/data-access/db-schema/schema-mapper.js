@@ -14,8 +14,8 @@ const prescriptionDrugsSchema = require('./schemas/prescription-drug.schema');
 const billSchema = require('./schemas/bill.schema');
 
 const patientAllergiesSchema = require('./schemas/patient-allergies.schema');
-const patientPhysicalExamsSchema=require('./schemas/patient-physical-exams.schema');
-const userPatientAllergiesSchema=require('./schemas/user-patient-allergies.schema');
+const patientPhysicalExamsSchema = require('./schemas/patient-physical-exams.schema');
+const userPatientAllergiesSchema = require('./schemas/user-patient-allergies.schema');
 
 const commentSchema = require('./schemas/user.scema');
 const doctorSchema = require('./schemas/doctor.schema');
@@ -34,7 +34,7 @@ mongoose.model(tableNames.PrescriptionDrugs, prescriptionDrugsSchema);
 mongoose.model(tableNames.bill, billSchema);
 
 mongoose.model(tableNames.PatientAllergies, patientAllergiesSchema);
-mongoose.model(tableNames.UserPatientAllergies,userPatientAllergiesSchema);
+mongoose.model(tableNames.UserPatientAllergies, userPatientAllergiesSchema);
 mongoose.model(tableNames.PatientPhysicalExams, patientPhysicalExamsSchema);
 
 mongoose.model(tableNames.Comments, commentSchema);

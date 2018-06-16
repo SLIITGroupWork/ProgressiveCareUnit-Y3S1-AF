@@ -15,7 +15,7 @@ router.get('/searchBillDetailsByPatientId/:patientId', (request, response) => {
 
 router.get('/searchAllBillDetails', (request, response) => {
 
-        billGenerateController.searchAllBillDetails().then(billResponse => {
+    billGenerateController.searchAllBillDetails().then(billResponse => {
         response.status(billResponse.status).send(billResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
@@ -24,10 +24,7 @@ router.get('/searchAllBillDetails', (request, response) => {
 
 router.post('/addNewBillDetails', (request, response) => {
 
-   // let billRequest = createRequest(request.body);
-  
-
-        billGenerateController.insertBillDetails(request.body).then(billResponse => {
+    billGenerateController.insertBillDetails(request.body).then(billResponse => {
         response.status(billResponse.status).send(billResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
@@ -35,9 +32,7 @@ router.post('/addNewBillDetails', (request, response) => {
 });
 router.put('/editBillDetails/:patientId', (request, response) => {
 
-    //let billRequest = createRequest(request.body);
-
-        billGenerateController.editBillDetails(request.params.patientId,request.body).then(billResponse => {
+    billGenerateController.editBillDetails(request.params.patientId, request.body).then(billResponse => {
         response.status(billResponse.status).send(billResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);

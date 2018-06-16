@@ -15,7 +15,7 @@ class DoctorService extends BaseService {
 
     getDoctorById(id) {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.doctorSchema.findOne({ _id:id}).exec().then((data) => {
+            this.unitOfWork.doctorSchema.findOne({ _id: id }).exec().then((data) => {
                 resolve(data);
             }).catch((err) => {
                 reject(err);
@@ -43,7 +43,8 @@ class DoctorService extends BaseService {
 
     updateDoctorsStatus(id, status) {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.doctorSchema.update({ _id: id },{ $set:{ doctorStatus: status }
+            this.unitOfWork.doctorSchema.update({ _id: id }, {
+                $set: { doctorStatus: status }
             }).then((data) => {
                 resolve(data);
             }).catch((err) => {
@@ -54,7 +55,8 @@ class DoctorService extends BaseService {
 
     updatePatientIsTreated(id, treated) {
         return new Promise((resolve, reject) => {
-            this.unitOfWork.patientRegistrationSchema.update({ _id: id },{ $set:{ isTreated: treated }
+            this.unitOfWork.patientRegistrationSchema.update({ _id: id }, {
+                $set: { isTreated: treated }
             }).then((data) => {
                 resolve(data);
             }).catch((err) => {
@@ -87,13 +89,13 @@ class DoctorService extends BaseService {
     getNextPatient() {
         return new Promise((resolve, reject) => {
             this.unitOfWork.patientRegistrationSchema.find({ isTreated: false }).exec()
-            .then((data) => {
-                data.sort((a,b)=>{return a.priority - b.priority});
-                resolve(data[0]);
-            }).catch((err) => {
-                console.log(err);
-                reject(err);
-            });
+                .then((data) => {
+                    data.sort((a, b) => { return a.priority - b.priority });
+                    resolve(data[0]);
+                }).catch((err) => {
+                    console.log(err);
+                    reject(err);
+                });
         });
     }
 }

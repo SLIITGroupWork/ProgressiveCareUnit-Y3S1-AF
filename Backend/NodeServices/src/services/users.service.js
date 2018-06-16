@@ -40,7 +40,7 @@ class UserService extends BaseService {
     getUserByNIC(nic) {
 
         return new Promise((resolve, reject) => {
-            
+
             this.unitOfWork.userSchema.findOne({ nic: nic.toUpperCase() }).exec().then(user => {
                 resolve(user);
             }).catch(err => {

@@ -92,7 +92,7 @@ export default class QuickPatientRegistration extends Component {
                 if (patientRegistrationResponse.isSuccess) {
                     this.clearForm(null);
 
-                    window.location.href('/')
+                    // window.location.href('/')
                 }
                 else {
                     this.setState({

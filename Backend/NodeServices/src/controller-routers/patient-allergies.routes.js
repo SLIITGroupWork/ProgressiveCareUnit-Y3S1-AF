@@ -3,39 +3,39 @@ const router = express.Router();
 const allergyController = require('../controllers/patient-allergies.controller');
 
 
-router.get('/:id',(request,reject)=>{
-    allergyController.getAllergyById(request.params.id).then(data=>{
+router.get('/:id', (request, reject) => {
+    allergyController.getAllergyById(request.params.id).then(data => {
         response.status(data.status).send(data);
-    }).catch(err=>{
+    }).catch(err => {
         response.status(err.status).send(err);
     })
 })
 
-router.get('/',(request,response)=>{
-    allergyController.getAllPatientAllergies().then(data=>{
+router.get('/', (request, response) => {
+    allergyController.getAllPatientAllergies().then(data => {
         response.status(data.status).send(data);
-    }).catch(err=>{
+    }).catch(err => {
         response.status(err.status).send(err);
     })
 })
 
-router.post('/',(request,response)=>{
-    allergyController.addPatientAllergy(request.body).then(data=>{
+router.post('/', (request, response) => {
+    allergyController.addPatientAllergy(request.body).then(data => {
         response.status(data.status).send(data);
-    }).catch(err=>{
+    }).catch(err => {
         response.status(err.status).send(err);
     })
 })
 
-router.put('/:id',(response,request)=>{
-    allergyController.updatePatientAllergy(request.params.id,request.body).then(data=>{
+router.put('/:id', (response, request) => {
+    allergyController.updatePatientAllergy(request.params.id, request.body).then(data => {
         response.status(data.status).send(data);
-    }).catch(err=>{
+    }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     })
 })
 
-module.exports=router;
+module.exports = router;
 
 
 

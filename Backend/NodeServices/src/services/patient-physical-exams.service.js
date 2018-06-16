@@ -67,6 +67,7 @@ class PatientPhysicalExamsService extends BaseService{
     insertNewPhysicalExam(examdata){
         return new Promise((resolve,reject)=>{
             let physicalExam= new this.unitOfWork.patientPhysicalExamsSchema({
+                    patientId:examdata.patientId,
                     examName:examdata.examName,
                     examType:examdata.examType,
                     examDescription:examdata.examDescription

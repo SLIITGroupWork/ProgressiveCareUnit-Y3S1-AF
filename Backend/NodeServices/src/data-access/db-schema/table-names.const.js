@@ -15,5 +15,6 @@ module.exports = {
     DoctorPatient: 'DoctorPatient',
     
     PatientAllergies: 'PatientAllergies',
-    PatientPhysicalExams:'PatientPhysicalExams'
+    PatientPhysicalExams:'PatientPhysicalExams',
+    UserPatientAllergies:'UserPatientAllergies'
 }

@@ -31,6 +31,16 @@ class PatientAllergyController extends BaseController{
             })
         })
     }
+
+    updatePatientAllergy(allergyId,allergyData){
+        return new Promise((resolve,reject)=>{
+            patientAllergyService.updatePatientAllergy(allergyId,allergyData.data).then(data=>{
+                resolve(this.createResponse(this.statusCodes.OK,data));
+            }).catch(err=>{
+                resolve(this.createResponse(this.statusCodes.InternalServerError,[],err));
+            })
+        })
+    }
 }
 
 module.exports=new PatientAllergyController();

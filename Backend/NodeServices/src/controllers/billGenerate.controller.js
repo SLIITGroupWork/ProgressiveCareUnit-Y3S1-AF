@@ -42,7 +42,7 @@ class PatientRegistrationController extends BaseController {
         return new Promise((resolve, reject) => {
 
             billService.getAllBillDetails().then(bill => {
-                resolve(this.createResponse(this.statusCodes.Created, bill));
+                resolve(this.createResponse(this.statusCodes.OK, bill));
             }).catch(err => {
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });

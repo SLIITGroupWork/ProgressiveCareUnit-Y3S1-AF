@@ -31,7 +31,7 @@ class EditBill extends Component{
         })
     }
     handleClickUpdate(userid) {
-        axios.put(`http://localhost:4000/api/bill/editBillDetails` + patientId, {
+        axios.put(`http://localhost:5556/api/bill/editBillDetails` + patientId, {
             hospitalCharges: this.state.hospitalCharges,
             laboraryCharges: this.state.laboraryCharges,
             OtherCharges:this.state.OtherCharges
@@ -60,13 +60,13 @@ class EditBill extends Component{
                 <div className="App-body">
                 <form >
                 <ControlLabel>Hospital Charges:</ControlLabel>
-                <FormControl value={this.state.hospitalCharges} id="formControluname" type="text" label="hospitalCharges" placeholder="hospital charges" onChange={this.handelHospitalChargesChange} />
+                <FormControl value={this.state.hospitalCharges} id="formControlhospitalcharges" type="text" label="hospitalCharges" placeholder="Hospital charges" onChange={this.handelHospitalChargesChange} />
                 <br/>
                 <ControlLabel>Laboratory Charges: </ControlLabel>
-                <FormControl  value={this.state.laboraryCharges} id="formControlpassword" type="text" label="laboraryCharges" placeholder="Laboratory charges" onChange={this.handelLaboratoryChargesChange}/>
+                <FormControl  value={this.state.laboraryCharges} id="formControllaborarycharges" type="text" label="laboraryCharges" placeholder="Laboratory charges" onChange={this.handelLaboratoryChargesChange}/>
                 <br/>
                 <ControlLabel>Other Charges: </ControlLabel>
-                <FormControl  value={this.state.OtherCharges} id="formControlpassword" type="text" label="OtherCharges" placeholder="Other charges" onChange={this.handelOtherChargesChange}/>
+                <FormControl  value={this.state.OtherCharges} id="formControlothercharges" type="text" label="OtherCharges" placeholder="Other charges" onChange={this.handelOtherChargesChange}/>
                 <br/>
                               
                 <Button bsStyle="success" bsSize="small" onClick={()=>this.handleClickUpdate(this.props.userid)}>Save Changes</Button>

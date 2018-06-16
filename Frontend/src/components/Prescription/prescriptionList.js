@@ -8,14 +8,13 @@ class ClientList extends Component {
     constructor() {
         super();
         this.state = {
-            // details: [],
-            // ID:'',
-            // Name: '',
-            // NIC: '',
-            // Email: '',
-            // Contact: '',
-            // District: '',
-            // showComponent:false
+            details: [],
+            patientId:'',
+            doctorId: '',
+            drugNames: [{drugname:''}],
+            quantities: [{quantity:''}],
+            descriptions: [{description:''}],
+            showComponent:false
 
 
     
@@ -58,7 +57,7 @@ class ClientList extends Component {
         this.getClients();
     }
     render() {
-        var rows = this.state.details.map(function (data, i,handleClickDelete) {
+        var rows = this.state.details.map(function (data, i) {
             return (
                 <tr key={i}>
                     <td>{data.name}</td>
@@ -66,7 +65,6 @@ class ClientList extends Component {
                     <td>{data.email}</td>
                     <td>{data.contact}</td>
                     <td>{data.district}</td>
-                    <td><Button bsStyle="danger" bsSize="small" onClick={() => this.handleClickDelete()}>Delete</Button></td>
                     <td><Button bsStyle="success" bsSize="small" onClick={() => this.passupdatedata(data._id,data.email,data.contact)}>Update</Button></td>
                 </tr>
             )

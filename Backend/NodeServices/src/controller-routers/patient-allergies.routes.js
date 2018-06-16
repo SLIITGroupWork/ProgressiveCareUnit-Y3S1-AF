@@ -27,6 +27,16 @@ router.post('/',(request,response)=>{
     })
 })
 
+router.put('/:id',(response,request)=>{
+    allergyController.updatePatientAllergy(request.params.id,request.body).then(data=>{
+        response.status(data.status).send(data);
+    }).catch(err=>{
+        response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
+    })
+})
+
+module.exports=router;
+
 
 
 

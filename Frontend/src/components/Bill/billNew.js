@@ -90,7 +90,7 @@ class billNew extends Component {
                     <form>
                         <div className="form-group">
                             <label for="patientId">Patient ID:</label>
-                            <input type="patientId" className="form-control" value={this.state.patientId} id="patientId" placeholder="Enter Patient ID" name="name" onChange={this.handleNameChange} />
+                            <input type="patientId" className="form-control" value={this.state.patientId} id="patientId" placeholder="Enter Patient ID" name="name" onChange={this.handlepatientIdChange} />
                         </div>                        
                         <div class="form-group">
                             <label for="hospitalCharges">Hospital Charges:</label>

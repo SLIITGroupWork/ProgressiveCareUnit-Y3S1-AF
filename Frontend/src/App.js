@@ -23,6 +23,7 @@ import AddBill from './components/Bill/billNew';
 import ViewBill from './components/Bill/billView';
 import SearchBill from './components/Bill/billSearch';
 import NewPrescription from './components/Prescription/prescriptionNew';
+import Export from './components/Bill/BillPDF';
 
 
 
@@ -74,6 +75,7 @@ class App extends Component {
 
                         <Route exact path="/bill/search" component={ SearchBill } />
                         <Route exact path="/prescription/new" component={ NewPrescription } />
+                        <Route exact path="/bill/PDF" component={ Export } />
 
 
                     </div>

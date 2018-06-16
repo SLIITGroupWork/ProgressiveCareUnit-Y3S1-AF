@@ -24,7 +24,7 @@ export default class Feedback extends Component {
     onSubmit(e) {
         e.preventDefault();
         
-        axios.post('http://localhost:8080/feedbacks', {
+        axios.post('http://localhost:8080/api/feedbacks', {
             description: this.state.description
           })
           .then(function (response) {

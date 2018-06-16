@@ -13,6 +13,8 @@ import QuickPatientRegistration from './components/patient-registrations/QuickPa
 
 
 class App extends Component {
+
+    
     render() {
         return (
             <Router>

@@ -18,7 +18,7 @@ export default class AuthService {
             return this.tokenData.username;
         }
         else {
-            'Not logged in'
+            return 'Unknown'
         }
     }
 

@@ -1,8 +1,41 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import AuthService from '../../shared/services/auth.service';
 
 class Navbar extends Component {
+
+    constructor() {
+
+        super();
+
+        this.authService = new AuthService();
+
+        this.state = {
+            isLoggedIn: this.authService.isLoggedIn,
+            loggedUsername: this.authService.username,
+            logout: this.authService.logout
+        };
+    }
+
+    renderLoginAndLogout() {
+
+        if (this.state.isLoggedIn) {
+
+            return (
+                <a className="nav-link" onClick={this.state.logout}>
+                    <span className="fas fa-sign-out-alt"></span>Logout
+                </a>
+            );
+        }
+        else {
+
+            return (
+                <Link className="nav-link" to="/login">
+                    <span className="fas fa-sign-in-alt mr-1"></span>Login
+                </Link>
+            );
+        }
+    }
 
     render() {
 
@@ -35,15 +68,16 @@ class Navbar extends Component {
                         </ul>
 
                         <ul className="navbar-nav ml-auto">
+
                             <li className="nav-item">
                                 <Link className="nav-link" to="/feedback">
                                     <span className="fas fa-comments mr-1"></span>Feedback
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/login">
-                                    <span className="fas fa-sign-in-alt mr-1"></span>Login
-                                </Link>
+                                {
+                                    this.renderLoginAndLogout()
+                                }
                             </li>
                         </ul>
                     </div>

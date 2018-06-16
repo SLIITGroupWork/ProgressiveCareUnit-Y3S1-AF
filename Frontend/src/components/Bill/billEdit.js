@@ -8,7 +8,8 @@ class EditBill extends Component{
         this.state={
             hospitalCharges:this.props.hospitalCharges,
             laboraryCharges:this.props.laboraryCharges,
-            OtherCharges:this.props.OtherCharges
+            OtherCharges:this.props.OtherCharges,
+            patientId:this.props.patientId,
         }
         this.handelHospitalChargesChange=this.handelHospitalChargesChange.bind(this);
         this.handelLaboratoryChargesChange=this.handelLaboratoryChargesChange.bind(this);
@@ -30,7 +31,7 @@ class EditBill extends Component{
             OtherCharges:e.target.value,
         })
     }
-    handleClickUpdate(userid) {
+    handleClickUpdate(patientId) {
         axios.put(`http://localhost:5556/api/bill/editBillDetails` + patientId, {
             hospitalCharges: this.state.hospitalCharges,
             laboraryCharges: this.state.laboraryCharges,
@@ -69,7 +70,7 @@ class EditBill extends Component{
                 <FormControl  value={this.state.OtherCharges} id="formControlothercharges" type="text" label="OtherCharges" placeholder="Other charges" onChange={this.handelOtherChargesChange}/>
                 <br/>
                               
-                <Button bsStyle="success" bsSize="small" onClick={()=>this.handleClickUpdate(this.props.userid)}>Save Changes</Button>
+                <Button bsStyle="success" bsSize="small" onClick={()=>this.handleClickUpdate(this.props.patientId)}>Save Changes</Button>
                 
                 </form>
                 </div>

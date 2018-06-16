@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import billEdit from './billEdit';
 import axios from 'axios';
 import { FieldGroup, Panel, ControlLabel, Form, FormGroup, Col, FormControl, Button, Checkbox, HelpBlock, Table } from 'react-bootstrap'
@@ -15,11 +15,11 @@ class billView extends Component {
             hospitalCharges:'',
             laboraryCharges: '',
             OtherCharges: '',
-            showComponent:false
+            showComponent:false,
     
         }
         this.getBills = this.getBills.bind(this);
-        // this.handleClickDelete=this.handleClickDelete.bind(this);
+        //this.billEdit=this.billEdit.bind(this);
         this.passupdatedata=this.passupdatedata.bind(this);
     }
     passupdatedata(patientId,hospitalCharges,laboraryCharges,OtherCharges){
@@ -31,8 +31,8 @@ class billView extends Component {
             OtherCharges:OtherCharges,
         });
     }
-    getBills() {
-        axios.get('http://localhost:5556/api/bill/searchAllBillDetails', {
+    getBills(patientId) {
+        axios.get('http://localhost:5556/api/bill/searchBillDetailsByPatientId' + patientId, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
             },
@@ -69,26 +69,6 @@ class billView extends Component {
 
         return (
             <div >
-                <div>
-                    <h2>Bill Details</h2>
-                    <form class="navbar-form navbar-left" action="/">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search" name="search" />
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-
-                <div class="btn-group">
-                    <Link to='/bill/new'><button type="button" class="btn btn-primary">Add New</button></Link>
-                </div>
-
-
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -103,11 +83,9 @@ class billView extends Component {
                         {rows}
                     </tbody>
                 </table>
-                {this.state.showComponent ? <billEdit patientId={this.state.patientId} hospitalCharges={this.state.hospitalCharges} laboraryCharges={this.state.laboraryCharges} OtherCharges={this.state.OtherCharges} onUpate={this.getBills}/>:null}
+                {this.state.showComponent ? <billEdit patientId={this.state.patientId} hospitalCharges={this.state.hospitalCharges} laboraryCharges={this.state.laboraryCharges} OtherCharges={this.state.OtherCharges} onUpate={this.getBills(this.props.patientId)}/>:null}
 
-                 <div class="btn-group">
-                    <Link to='/Client/BillPDF'><button type="button" class="btn btn-primary">Download Bill</button></Link>
-                </div>
+                
  
             </div>
 

@@ -14,8 +14,7 @@ class ClientList extends Component {
             drugNames: [{drugname:''}],
             quantities: [{quantity:''}],
             descriptions: [{description:''}],
-            showComponent:false
-
+            showComponent:false,
 
     
         }
@@ -32,7 +31,7 @@ class ClientList extends Component {
         });console.log(email)
     }
     getPrescription() {
-        axios.get('http://localhost:5556/api/prescriptions/searchPrescription/'+PatientName, {
+        axios.get('http://localhost:5556/api/prescriptions/searchPrescription/'+ PatientName, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
             },
@@ -51,7 +50,7 @@ class ClientList extends Component {
             })
     }
     handleClickDelete(){
-        alert("Hello world")
+        alert("Deleted!!!")
     }
     componentDidMount() {
         this.getClients();

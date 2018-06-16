@@ -24,9 +24,10 @@ router.get('/searchAllBillDetails', (request, response) => {
 
 router.post('/addNewBillDetails', (request, response) => {
 
-    let billRequest = createRequest(request.body);
+   // let billRequest = createRequest(request.body);
+  
 
-        billGenerateController.insertBillDetails(billRequest).then(billResponse => {
+        billGenerateController.insertBillDetails(request.body).then(billResponse => {
         response.status(billResponse.status).send(billResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
@@ -34,9 +35,9 @@ router.post('/addNewBillDetails', (request, response) => {
 });
 router.put('/editBillDetails/:patientId', (request, response) => {
 
-    let billRequest = createRequest(request.body);
+    //let billRequest = createRequest(request.body);
 
-        billGenerateController.updateBillDetails(patientId,billRequest).then(billResponse => {
+        billGenerateController.updateBillDetails(patientId,request.body).then(billResponse => {
         response.status(billResponse.status).send(billResponse);
     }).catch(err => {
         response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);

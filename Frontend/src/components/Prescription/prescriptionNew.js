@@ -7,6 +7,9 @@ class prescriptionNew extends Component {
         this.state = {
             patientId: '',
             doctorId: '',
+            drugname:'',
+            quantity:'',
+            description:'',
             drugNames: [{drugname:''}],
             quantities: [{quantity:''}],
             descriptions: [{description:''}],
@@ -15,7 +18,7 @@ class prescriptionNew extends Component {
         this.handlepatientIdChange = this.handlepatientIdChange.bind(this)
         this.handleDoctorIdChange = this.handleDoctorIdChange.bind(this)
         this.handleRemoveDrugHolder = this.handleRemoveDrugHolder.bind(this)
-        this.handleDrugHolderNameChange = this.handhandleDrugHolderNameChangelePwdChange.bind(this)
+        this.handleDrugHolderNameChange = this.handleDrugHolderNameChange.bind(this)
         this.handleAddDrugholder = this.handleAddDrugholder.bind(this)
         this.handleQuantityHolderNameChange = this.handleQuantityHolderNameChange.bind(this)
         this.handleDescriptionHolderNameChange = this.handleDescriptionHolderNameChange.bind(this)
@@ -66,7 +69,8 @@ class prescriptionNew extends Component {
     
     
     handleClick = event => {
-        event.preventDefault();
+        //event.preventDefault();
+        console.log("check")
         axios.post('http://localhost:5556/api/prescriptions/addPrescription', {
             patientId: this.state.patientId,
             doctorId: this.state.doctorId,
@@ -86,6 +90,9 @@ class prescriptionNew extends Component {
         this.setState = {
             patientId: '',
             doctorId: '',
+            drugname:'',
+            quantity:'',
+            description:'',
             drugNames: [{drugname:''}],
             quantities: [{quantity:''}],
             descriptions: [{description:''}],
@@ -109,31 +116,39 @@ class prescriptionNew extends Component {
                     <form>
                         <div className="form-group">
                             <label for="patientId">Patient ID:</label>
-                            <input type="patientId" className="form-control" value={this.state.patientId} id="patientId" placeholder="Enter Patient ID" name="patientId" onChange={this.handleNameChange} />
+                            <input type="patientId" className="form-control" value={this.state.patientId} id="patientId" placeholder="Enter Patient ID" name="patientId" onChange={this.handlepatientIdChange} />
                         </div>
                         <div class="form-group">
                             <label for="doctorId">Doctor ID:</label>
                             <input type="doctorId" class="form-control" value={this.state.doctorId} id="doctorId" placeholder="Enter Doctor Dd" name="doctorId" onChange={this.handleDoctorIdChange} />
                         </div>
-                        <form>
-                            {this.state.drugNames.map((drugNames ,idx)=>{
+                        <div>
+                        <label for="Drugs">Drugs :</label><br></br>
+                        
+                            {this.state.drugNames.map((drugname ,idx)=>{
                                     
-                                <div className="drugHolder">
-                                    <table>
-                                        <input type="text" placeholder='Drug Name' onChange={this.handleDrugHolderNameChange(idx)} />
+                                <div className="drugname">
+                                    
+                                        <label for="Drugs">Drug Name :</label>
+                                        <input type="text" placeholder={`drugname #${idx + 1} drugname`} onChange={this.handleDrugHolderNameChange(idx)} />
+                                        <label for="Drugs">quantity :</label>
                                         <input type="text" placeholder='Drug quantity' onChange={this.handleQuantityHolderNameChange(idx)} />
+                                        <label for="Drugs">Description :</label>
                                         <input type="text" placeholder='Drug description' onChange={this.handleDescriptionHolderNameChange(idx)} />
                                     
-                                        <button type="button" onClick={this.handleRemoveDrugHolder(idx)} className="small">-</button>
-                                    </table>
-                                </div>                                   
+                                        <button type="button" onClick={this.handleRemoveDrugHolder(idx)} className="btn btn-primary">-</button>
+                                    
+                                </div>                            
                                     
 
                             })}
-                            <button type="button" onClick={this.handleAddDrugholder} className="small">Add Drugholder</button>
-                        </form>
-                                    
-                        <button type="button" onClick={this.handleClick} class="btn btn-primary">Add New</button>
+                            <button type="button" onClick={this.handleAddDrugholder} className="btn btn-primary">Add Drugholder</button>
+                    
+                        </div>
+                        <div>
+                        <br></br>       
+                        <button type="button" onSubmit={this.handleClick(this)} class="btn btn-primary">Add New</button>
+                        </div>
                     </form>
 
                 </div>

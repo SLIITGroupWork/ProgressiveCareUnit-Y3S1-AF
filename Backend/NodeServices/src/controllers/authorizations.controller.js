@@ -12,10 +12,10 @@ class AuthorizationsController extends BaseController {
                     resolve(this.createResponse(this.statusCodes.OK, tokenData, "User login successfull", ['id']));
                 }
                 else {
-                    resolve(this.createResponse(this.statusCodes.Unauthorized, null, "Username or password invalid"));
+                    resolve(this.createResponse(this.statusCodes.BadRequest, null, "Username or password invalid"));
                 }
             }).catch(err => {
-               reject(this.createResponse(this.statusCodes.InternalServerError, null, err)); 
+               reject(this.createResponse(this.statusCodes.InternalServerError, null, err));
             });
         })
     }

@@ -1,9 +1,11 @@
-const apiService = require('./api.service');
+import ApiService from './api.service';
 
-class AuthService {
+export default class AuthService {
 
     constructor() {
-        this.tokenData = apiService.tokenData;
+
+        this.apiService = new ApiService();
+        this.tokenData = this.apiService.tokenData;
     }
 
     get isLoggedIn() {
@@ -22,8 +24,6 @@ class AuthService {
 
     logout() {
         localStorage.removeItem('tokenData');
-        window.location.href = '/login';
+        window.location.href = '/';
     }
 }
-
-module.exports = new AuthService();

@@ -90,6 +90,7 @@ class AuthorizationsService extends BaseService {
                                 userLevel: applicationUser.userLevel,
                                 firstName: user.firstName,
                                 lastName: user.lastName,
+                                nic: user.nic,
                                 issuedAt: currentTimeStamp,
                                 expiresIn: currentTimeStamp + appConfigs.tokenKeyValidPeriod
                             };
@@ -107,6 +108,9 @@ class AuthorizationsService extends BaseService {
                                         let tokenData = {
                                             token: token,
                                             username: applicationUser.username,
+                                            firstName: user.firstName,
+                                            lastName: user.lastName,
+                                            nic: user.nic,
                                             userLevel: applicationUser.userLevel,
                                             issuedAt: payload.issuedAt,
                                             expireAt: payload.expireAt

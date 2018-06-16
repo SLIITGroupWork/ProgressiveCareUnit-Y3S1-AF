@@ -36,8 +36,10 @@ class prescriptionController extends BaseController {
         return new Promise((resolve, reject) => {
 
             prescriptionService.updatePrescription(patientID,prescriptionData).then(data => {
+                console.log("CheckComntrollerghfd")
                 resolve(this.createResponse(this.statusCodes.OK, data));
             }).catch(err => {
+                console.log(err)
                 reject(this.createResponse(this.statusCodes.InternalServerError, [], err));
             });
         });

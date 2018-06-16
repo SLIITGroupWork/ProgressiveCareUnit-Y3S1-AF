@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const PDFDocument = require('pdfkit');
 const billGenerateController = require('../controllers/billGenerate.controller');
 const createRequest = require('../data-trans-objects/resquest');
 const httpStatus = require('../consts/http-status.consts');
@@ -13,7 +14,7 @@ router.get('/generateBill/:patientId', (request, response) => {
     // }).catch(err => {
     //     response.status(err.status ? err.status : httpStatus.InternalServerError).send(err);
     // });
-    const doc = new PDFDocument()
+    const doc = new PDFDocument
     let filename = request.body.filename
     // Stripping special characters
     filename = encodeURIComponent(filename) + '.pdf'
@@ -22,10 +23,12 @@ router.get('/generateBill/:patientId', (request, response) => {
     response.setHeader('Content-disposition', 'attachment; filename="' + filename + '"')
     response.setHeader('Content-type', 'application/pdf')
     //const content = req.body.content
+
+    console.log(request.params)
     const content =billGenerateController.generateBill(request.params.patientId,request.body);
     doc.y = 300
     doc.text(content, 50, 50);
-    doc.pipe(res);
+    doc.pipe(response);
     doc.end();
 });
 

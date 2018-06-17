@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const JwtStartegy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 
